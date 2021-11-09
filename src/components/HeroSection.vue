@@ -15,7 +15,7 @@
 
 <style scoped>
 .hero-section {
-    color: #fff;
+    color: var(--font-color);
     position: relative;
     min-height: 100vh;
     width: 90%;

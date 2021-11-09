@@ -5,12 +5,17 @@
             class="particles"
             :options="particleOptions"
         />
+        <sound />
         <router-view />
     </div>
 </template>
 
 <script>
+    import Sound from '@/components/Sound'
     export default {
+        components: {
+            Sound
+        },
         data() {
             return {
                 particleOptions: {
@@ -86,7 +91,7 @@
                 }
             }
         },
-        methods: {
+        mounted() {
 
         }
     }

@@ -3,6 +3,8 @@
 :root {
     --font-headers: 'Share Tech Mono', monospace;
     --font-body: 'Roboto', sans-serif;
+    --font-color: #fff;
+    --base-color: hsl(266, 31%, 37%);
     --text-shadow-color: rgba(218, 218, 218, 0.2);
     --text-shadow:
         1px -5px 8px var(--text-shadow-color),
