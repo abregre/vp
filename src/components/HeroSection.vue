@@ -1,14 +1,22 @@
 <template>
     <section class="hero-section">
+        <div class="logo">
+            <img :src="require('@/assets/logo.png')" alt="logo">
+        </div>
         <div class="info-container">
             <h1 class="route-title"> &lt;FRONT-END <br>ENGINEER &lt;&#47;&gt;</h1>
             <p>Currently available for contract only</p>
         </div>
+        <nav-bar />
     </section>
 </template>
 
 <script>
+    import NavBar from '@/components/NavBar'
     export default {
+        components: {
+            NavBar
+        }
 
     }
 </script>
@@ -26,6 +34,14 @@
     margin: 0 auto;
 }
 
+.logo {
+    max-width: 90px;
+}
+
+.logo img {
+    width: 100%;
+}
+
 h1 {
     font-size: 3.4rem;
     margin-bottom: 1rem;
@@ -39,6 +55,10 @@ p {
 }
 
 @media screen and (min-width: 768px) {
+    .logo {
+        max-width: 100px;
+    }
+
     h1 {
         font-size: 6rem;
     }
@@ -49,8 +69,8 @@ p {
 }
 
 @media screen and (min-width: 1024px) {
-    .hero-section {
-        width: 85%;
+    .logo {
+        max-width: 120px;
     }
 
     h1 {

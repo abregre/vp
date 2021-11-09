@@ -1,15 +1,18 @@
 <template>
     <div class="home">
         <hero-section />
+        <about-section />
     </div>
 </template>
 
 <script>
     import HeroSection from '@/components/HeroSection'
+    import AboutSection from '@/components/AboutSection'
 
     export default {
         components: {
-            HeroSection
+            HeroSection,
+            AboutSection
         },
         data() {
             return {

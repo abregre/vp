@@ -105,7 +105,7 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    box-shadow: inset 0 0 0 1000px hsla(266, 31%, 37%, 0.4);
+    box-shadow: inset 0 0 0 1000px hsla(266, 31%, 20%, 0.4);
 }
 
 * {
