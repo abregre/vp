@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Share+Tech+Mono&display=swap');
+
+:root {
+    --font-headers: 'Share Tech Mono', monospace;
+    --font-body: 'Roboto', sans-serif;
+    --text-shadow-color: rgba(218, 218, 218, 0.2);
+    --text-shadow:
+        1px -5px 8px var(--text-shadow-color),
+        2px -4px 8px var(--text-shadow-color),
+        3px -3px 8px var(--text-shadow-color),
+        4px -2px 8px var(--text-shadow-color),
+        5px -1px 8px var(--text-shadow-color),
+        -1px 5px 8px var(--text-shadow-color),
+        -2px 4px 8px var(--text-shadow-color),
+        -3px 3px 8px var(--text-shadow-color),
+        -4px 2px 8px var(--text-shadow-color),
+        -5px 1px 8px var(--text-shadow-color);
+}
