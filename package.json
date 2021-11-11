@@ -7,12 +7,12 @@
         "build": "vue-cli-service build --mode production",
         "lint": "eslint --ext .js,.vue src",
         "lint-style": "stylelint ./src/**/*.{vue,scss}",
-        "deploy": "node scripts/gh-pages-deploy.js",
         "build:dev": "vue-cli-service build --mode development",
         "build:prod": "vue-cli-service build --mode production",
         "build:stage": "vue-cli-service build --mode staging",
         "dev": "vue-cli-service serve",
-        "start": "vue-cli-service serve --open"
+        "start": "vue-cli-service serve --open",
+        "deploy": "node scripts/gh-pages-deploy.js"
     },
     "dependencies": {
         "@fortawesome/fontawesome-svg-core": "^1.2.36",
