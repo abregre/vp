@@ -107,7 +107,7 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    box-shadow: inset 0 0 0 1000px hsla(266, 31%, 10%, 0.4);
+    box-shadow: inset 0 0 0 1500px hsla(266, 31%, 15%, 0.6);
 }
 
 * {
@@ -130,6 +130,5 @@ h6 {
 html,
 body {
     font-family: var(--font-body);
-    text-shadow: var(--text-shadow);
 }
 </style>

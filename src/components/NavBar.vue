@@ -56,6 +56,8 @@
     justify-content: space-around;
     align-items: center;
     width: 100%;
+    font-family: var(--font-headers);
+    text-shadow: var(--text-shadow);
 }
 
 .custom-btn {

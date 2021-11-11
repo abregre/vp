@@ -49,11 +49,11 @@
 <style scoped>
 .home {
     width: 100%;
-    overflow: hidden;
 }
 
 .home.fullscreen {
-    height: 100vh;
+    max-height: 100vh;
+    overflow: hidden;
 }
 
 .ToggleAudioOverlay {
