@@ -10,14 +10,15 @@
         "font-family-no-missing-generic-family-keyword": [
             true,
             {
-                ignoreFontFamilies: ['/.*/'
+                "ignoreFontFamilies": [
+                    "/.*/"
                 ]
             }
         ],
         "selector-pseudo-element-no-unknown": [
             true,
             {
-                ignorePseudoElements: [
+                "ignorePseudoElements": [
                     "v-deep"
                 ]
             }

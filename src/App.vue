@@ -46,7 +46,7 @@
                             color: {
                                 value: 'hsl(0, 0%, 30%)'
                             },
-                            distance: 200,
+                            distance: 500,
                             opacity: 0.1,
                             width: 1
                         },
@@ -70,18 +70,20 @@
                             density: {
                                 enable: true
                             },
-                            limit: 500,
-                            value: 250
+                            limit: 150,
+                            value: 150
                         },
                         opacity: {
-                            value: 1,
+                            value: 0.3,
                             animation: {
                                 speed: 1,
                                 minimumValue: 0.1
                             }
                         },
                         size: {
-                            value: 1,
+                            random: true,
+                            minValue: 1,
+                            maxValue: 3,
                             animation: {
                                 speed: 30,
                                 minimumValue: 0.1
@@ -105,7 +107,7 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    box-shadow: inset 0 0 0 1000px hsla(266, 31%, 20%, 0.4);
+    box-shadow: inset 0 0 0 1000px hsla(266, 31%, 10%, 0.4);
 }
 
 * {

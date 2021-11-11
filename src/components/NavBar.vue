@@ -16,16 +16,43 @@
 </template>
 
 <script>
+    import { gsap } from 'gsap'
     export default {
-
+        data() {
+            return {
+                tml: null
+            }
+        },
+        computed: {
+            hasBeenClicked() {
+                return this.$store.getters.hasBeenClickedOnce
+            }
+        },
+        watch: {
+            hasBeenClicked(newVal) {
+                if (newVal) {
+                    this.tml.play()
+                }
+            }
+        },
+        mounted() {
+            this.tml = gsap.timeline({ paused: true, delay: 1 })
+            gsap.utils.toArray('.custom-btn').forEach((btn, i) => {
+                this.tml.from(btn, {
+                    duration: 1,
+                    autoAlpha: 0,
+                    ease: 'none'
+                }, i * 0.1)
+            })
+        }
     }
 </script>
 
 <style scoped>
 .navbar-container {
-    margin-top: 10vh;
     display: flex;
     flex-wrap: wrap;
+    flex-grow: 1;
     justify-content: space-around;
     align-items: center;
     width: 100%;
@@ -49,7 +76,7 @@
     height: 2px;
     content: "";
     position: absolute;
-    background-color: #fff;
+    background-color: hsla(0, 0%, 100%, 0.7);
     width: 0%;
     bottom: 0;
 }
@@ -65,12 +92,8 @@
 }
 
 @media screen and (min-width: 1024px) {
-    .navbar-container {
-        margin-top: 15vh;
-    }
-
     .custom-btn {
-        max-width: 170px;
+        max-width: 200px;
         min-height: 50px;
         font-size: 2rem;
     }
