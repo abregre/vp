@@ -12,7 +12,7 @@
         "build:stage": "vue-cli-service build --mode staging",
         "dev": "vue-cli-service serve",
         "start": "vue-cli-service serve --open",
-        "deploy": "node scripts/gh-pages-deploy.js"
+        "deploy": "sh deploy.sh"
     },
     "dependencies": {
         "@fortawesome/fontawesome-svg-core": "^1.2.36",
