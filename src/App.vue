@@ -102,8 +102,8 @@
 #app {
     background: url('~@/assets/hero-image.jpg');
     background-size: cover;
-    background-position: center;
     background-repeat: no-repeat;
+    background-attachment: fixed;
     box-shadow: inset 0 0 0 1500px hsla(266, 31%, 15%, 0.6);
 }
 
