@@ -8,7 +8,7 @@
         </div>
         <faq-section />
         <tool-section />
-        <!-- <info-section /> -->
+        <info-section />
     </div>
 </template>
 
@@ -16,15 +16,15 @@
     import HeroSection from '@/components/HeroSection'
     import FaqSection from '@/components/FAQSection'
     import ToolSection from '@/components/ToolSection'
-    // import InfoSection from '@/components/InfoSection'
+    import InfoSection from '@/components/InfoSection'
     import { gsap } from 'gsap'
 
     export default {
         components: {
             HeroSection,
             FaqSection,
-            ToolSection
-            // InfoSection
+            ToolSection,
+            InfoSection
         },
         data() {
             return {

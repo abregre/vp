@@ -1,14 +1,14 @@
 <template>
     <section id="infoSection" class="info-section">
-        <div class="section-header">
+        <!-- <div class="section-header">
             <h2 class="main-content-title">INFO</h2>
         </div>
         <form @submit.prevent="sendEmail">
             <label>Name</label>
             <input v-model="name" type="text" required>
             <button type="submit">Submit</button>
-        </form>
-
+        </form> -->
+        .
     </section>
 </template>
 
@@ -32,7 +32,7 @@
     color: var(--font-color);
     position: relative;
     width: 90%;
-    margin: 3rem auto;
+    margin: 3rem auto 0;
 }
 
 .section-header {
