@@ -8,7 +8,7 @@
         "lint": "eslint --ext .js,.vue src",
         "lint-style": "stylelint ./src/**/*.{vue,scss}",
         "build:dev": "vue-cli-service build --mode development",
-        "build:prod": "vue-cli-service build --mode production",
+        "build:prod": "vue-cli-service build --mode --ignore-engines production",
         "build:stage": "vue-cli-service build --mode staging",
         "dev": "vue-cli-service serve",
         "start": "vue-cli-service serve --open",
