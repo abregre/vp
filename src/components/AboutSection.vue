@@ -1,8 +1,7 @@
 <template>
     <section id="aboutSection" class="about-section">
         <div class="about-info">
-            <h1 class="title">About Me</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi est tempora, aperiam nisi voluptatum ducimus ad, adipisci maiores aliquid tempore odio, quas ea distinctio reiciendis? Quibusdam amet nostrum quae excepturi eum nesciunt dignissimos dolor facere ab ratione sit expedita incidunt architecto ducimus, voluptatibus sint odit alias adipisci assumenda in nam perferendis aliquid! Itaque tempora, excepturi tempore accusantium recusandae, possimus debitis doloribus nisi placeat,</p><p> beatae alias dolorum in. Doloribus totam omnis itaque est, dolore hic ratione harum in, inventore dolorem quisquam officia deleniti perferendis voluptatum fuga?Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta eum ipsa voluptate doloribus, quaerat in iste placeat natus officia voluptas tempore eos ullam veritatis, labore minima? Mollitia quibusdam magnam voluptatum numquam tempore excepturi iusto deserunt nostrum, culpa nesciunt omnis! Debitis iusto iste commodi officia deserunt obcaecati magnam eveniet assumenda facilis?</p>
+            <faq-collection />
         </div>
         <div class="about-image-container">
             <div class="about-image" />
@@ -11,10 +10,14 @@
 </template>
 
 <script>
+    import FaqCollection from '@/components/FaqCollection'
     import { gsap } from 'gsap'
     import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
     export default {
+        components: {
+            FaqCollection
+        },
         mounted() {
             gsap.registerPlugin(ScrollTrigger)
 
@@ -70,7 +73,7 @@
     min-height: 500px;
     position: relative;
     border-radius: 20px;
-    transition: background-image 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
     box-shadow: var(--text-shadow);
 }
 
@@ -114,6 +117,16 @@ p {
     text-shadow: var(--text-shadow-color);
 }
 
+@keyframes rotating {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 @media screen and (min-width: 768px) {
     .about-image {
         width: 90%;
@@ -154,6 +167,7 @@ p {
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
+        transform: scale(1.1) rotateY(-10deg);
     }
 
     p {

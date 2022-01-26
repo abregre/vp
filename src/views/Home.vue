@@ -7,18 +7,21 @@
                 Click to start your journey
             </span>
         </div>
+        <gear-section />
     </div>
 </template>
 
 <script>
     import HeroSection from '@/components/HeroSection'
     import AboutSection from '@/components/AboutSection'
+    import GearSection from '@/components/GearSection'
     import { gsap } from 'gsap'
 
     export default {
         components: {
             HeroSection,
-            AboutSection
+            AboutSection,
+            GearSection
         },
         data() {
             return {

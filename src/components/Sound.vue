@@ -1,7 +1,7 @@
 <template>
     <div class="sound" :class="{'is-muted': isMuted}" @click="toggleMute">
-        <img v-if="isMuted" class="sound-off" :src="require('@/assets/mute.png')">
-        <img v-else class="sound-on" :src="require('@/assets/unmute.png')">
+        <img v-if="isMuted" class="sound-off" :src="require('@/assets/mute.png')" alt="muted">
+        <img v-else class="sound-on" :src="require('@/assets/unmute.png')" alt="unmuted">
     </div>
 </template>
 <script>
