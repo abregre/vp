@@ -1,7 +1,7 @@
 <template>
     <div class="navbar-container">
         <div v-scroll-to="'#aboutSection'" class="custom-btn">
-            <span class="noselect">About</span>
+            <span class="noselect">FAQ</span>
         </div>
         <div v-scroll-to="'#workSection'" class="custom-btn">
             <span class="noselect">Works</span>
@@ -57,7 +57,7 @@
     align-items: center;
     width: 100%;
     font-family: var(--font-headers);
-    text-shadow: var(--text-shadow);
+    text-shadow: var(--text-shadow-light);
 }
 
 .custom-btn {

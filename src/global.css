@@ -11,19 +11,19 @@
     --tablet-font-body: 1.3rem;
     --desktop-font-title: 10rem;
     --desktop-font-body: 1.4rem;
-    --text-shadow-color: rgba(218, 218, 218, 0.2);
-    --text-shadow-width: 8px;
-    --text-shadow:
-        1px -5px var(--text-shadow-width) var(--text-shadow-color),
-        2px -4px var(--text-shadow-width) var(--text-shadow-color),
-        3px -3px var(--text-shadow-width) var(--text-shadow-color),
-        4px -2px var(--text-shadow-width) var(--text-shadow-color),
-        5px -1px var(--text-shadow-width) var(--text-shadow-color),
-        -1px 5px var(--text-shadow-width) var(--text-shadow-color),
-        -2px 4px var(--text-shadow-width) var(--text-shadow-color),
-        -3px 3px var(--text-shadow-width) var(--text-shadow-color),
-        -4px 2px var(--text-shadow-width) var(--text-shadow-color),
-        -5px 1px var(--text-shadow-width) var(--text-shadow-color);
+    --text-shadow-light-color: rgba(218, 218, 218, 0.2);
+    --text-shadow-light:
+        1px -5px 8px var(--text-shadow-light-color),
+        2px -4px 8px var(--text-shadow-light-color),
+        3px -3px 8px var(--text-shadow-light-color),
+        4px -2px 8px var(--text-shadow-light-color),
+        5px -1px 8px var(--text-shadow-light-color),
+        -1px 5px 8px var(--text-shadow-light-color),
+        -2px 4px 8px var(--text-shadow-light-color),
+        -3px 3px 8px var(--text-shadow-light-color),
+        -4px 2px 8px var(--text-shadow-light-color),
+        -5px 1px 8px var(--text-shadow-light-color);
+    --box-shadow-light: drop-shadow(3px 3px 8px rgba(255, 255, 255, 0.7));
 }
 
 ::selection {

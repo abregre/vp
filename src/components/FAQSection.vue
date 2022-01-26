@@ -1,22 +1,31 @@
 <template>
-    <div class="container">
+    <section class="faq-section">
+        <div class="section-header">
+            <h1 class="main-content-title">FAQ</h1>
 
-        <div class="faq-container">
-            <faq-item
-                v-for="faqItem in faqItems"
-                :key="faqItem.id"
-                :faq-item="faqItem"
-            />
+            <img v-scroll-to="'#workSection'" :src="require('@/assets/svg/double-arrow-down.svg')" alt="skip section" class="skip-btn">
+
         </div>
-    </div>
+        <div
+            v-for="faq in faqItems"
+            :key="faq.id"
+            class="faq-item"
+        >
+            <div class="screen screen-1">
+                <strong>Question:</strong> {{ faq.question }}
+            </div>
+            <div class="screen screen-2">
+                <strong>Answer:</strong> {{ faq.answer }}
+            </div>
+        </div>
+    </section>
 </template>
 
 <script>
-    import FaqItem from '@/components/FaqItem'
+    import { gsap } from 'gsap'
+    import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
     export default {
-        components: {
-            FaqItem
-        },
         data() {
             return {
                 faqItems: [
@@ -53,18 +62,49 @@
 
                 ]
             }
+        },
+        mounted() {
+            gsap.registerPlugin(ScrollTrigger)
+            ScrollTrigger.batch('.faq-item', {
+                onEnter: batch => {
+                    gsap.from(batch, {
+                        autoAlpha: 0,
+                        y: 200,
+                        duration: 1,
+                        stagger: 0.2
+                    })
+                },
+                onLeave: batch => {
+                    gsap.to(batch, {
+                        y: 0,
+                        duration: 1,
+                        stagger: 0.2
+                    })
+                },
+                onEnterBack: batch => {
+                    gsap.from(batch, {
+                        y: -200,
+                        duration: 1,
+                        stagger: 0.2
+                    })
+                }
+            })
         }
     }
 </script>
 
 <style scoped>
-
-.container {
+.faq-section {
+    color: var(--font-color);
+    position: relative;
     width: 90%;
     margin: 0 auto;
-    display: grid;
-    grid-template-rows: 15vh 1fr;
-    grid-auto-flow: row;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .main-content-title {
@@ -72,27 +112,70 @@
     line-height: 3.3rem;
     font-family: var(--font-headers);
     font-weight: 700;
-    margin-bottom: 3rem;
+    text-shadow: var(--text-shadow-light);
 }
 
-.faq-container {
+.skip-btn {
+    margin: auto 0;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    filter: var(--box-shadow-light);
+}
+
+.faq-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.screen {
+    max-width: 250px;
     width: 100%;
+    border: 3px solid #fff;
+    box-shadow: var(--text-shadow-light);
+    padding: 1rem;
+    background: #fff;
+    color: hsla(0, 0%, 0%, 0.75);
+    font-size: 1.1rem;
+    font-family: var(--font-headers);
+    border-radius: 10px;
+}
+
+.screen-1 {
+    margin-top: 2rem;
+    align-self: flex-start;
+}
+
+.screen-2 {
+    margin-top: 1rem;
+    align-self: flex-end;
 }
 
 @media screen and (min-width: 768px) {
     .main-content-title {
         font-size: var(--tablet-font-title);
     }
-}
 
-@media screen and (min-width: 1048px) {
-    .container {
-        width: 95%;
-        align-items: flex-start;
+    .faq-item {
+        margin-top: 2rem;
     }
 
-    .main-content-title {
-        margin-bottom: 5rem;
+    .screen {
+        max-width: 350px;
+        padding: 1.3rem;
+        font-size: 1.3rem;
+    }
+
+    .screen-1 {
+        margin-top: 3rem;
+    }
+
+    .screen-2 {
+        margin-top: 2rem;
     }
 }
+
+/* @media screen and (min-width: 1048px) {
+
+} */
 </style>

@@ -33,7 +33,7 @@
 
 .faq-item-title {
     font-size: var(--desktop-font-body);
-    text-shadow: var(--text-shadow);
+    text-shadow: var(--text-shadow-light);
     font-family: var(--font-headers);
     font-weight: 700;
     margin: auto 0 1rem;

@@ -1,27 +1,27 @@
 <template>
     <div class="home" :class="{'fullscreen': !hasBeenClicked}">
         <hero-section />
-        <about-section />
         <div v-if="!hasBeenClicked" class="ToggleAudioOverlay" @click="startAudio">
             <span class="welcome-text">
                 Click to start your journey
             </span>
         </div>
-        <gear-section />
+        <faq-section />
+        <div id="workSection">
+            Hello from Work section
+        </div>
     </div>
 </template>
 
 <script>
     import HeroSection from '@/components/HeroSection'
-    import AboutSection from '@/components/AboutSection'
-    import GearSection from '@/components/GearSection'
+    import FaqSection from '@/components/FAQSection'
     import { gsap } from 'gsap'
 
     export default {
         components: {
             HeroSection,
-            AboutSection,
-            GearSection
+            FaqSection
         },
         data() {
             return {

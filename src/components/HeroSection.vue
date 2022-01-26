@@ -86,12 +86,14 @@ h1 {
     line-height: var(--mobile-font-title);
     margin-bottom: 1rem;
     user-select: none;
+    text-shadow: var(--text-shadow-light);
 }
 
 p {
     font-size: var(--mobile-font-body);
     padding-left: 0.5rem;
     user-select: none;
+    text-shadow: var(--text-shadow-light);
 }
 
 .cursor {

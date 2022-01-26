@@ -74,7 +74,7 @@
     position: relative;
     border-radius: 20px;
     transition: all 0.5s ease-in-out;
-    box-shadow: var(--text-shadow);
+    box-shadow: var(--text-shadow-light);
 }
 
 .about-image:hover,
@@ -114,7 +114,7 @@ p {
     font-size: var(--mobile-font-body);
     line-height: calc(var(--mobile-font-body) + 0.5rem);
     text-align: justify;
-    text-shadow: var(--text-shadow-color);
+    text-shadow: var(--text-shadow-light-color);
 }
 
 @keyframes rotating {
