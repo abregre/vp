@@ -5,11 +5,13 @@ import store from './store'
 
 import VueParticles from 'particles.vue'
 import VueScrollTo from 'vue-scrollto'
+import VueDOMPurifyHTML from 'vue-dompurify-html'
 
-Vue.config.productionTip = false
+Vue.use(VueDOMPurifyHTML)
 
 Vue.use(VueParticles)
 Vue.use(VueScrollTo)
+Vue.config.productionTip = false
 
 new Vue({
     router,

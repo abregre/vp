@@ -1,9 +1,14 @@
 <template>
-    <section class="faq-section">
+    <section id="faqSection" class="faq-section">
         <div class="section-header">
             <h1 class="main-content-title">FAQ</h1>
-
-            <img v-scroll-to="'#workSection'" :src="require('@/assets/svg/double-arrow-down.svg')" alt="skip section" class="skip-btn">
+            <img
+                v-scroll-to="'#workSection'"
+                :src="require('@/assets/svg/double-arrow-down.svg')"
+                alt="skip section"
+                class="skip-btn"
+                title="Skip to next section"
+            >
 
         </div>
         <div
@@ -12,10 +17,10 @@
             class="faq-item"
         >
             <div class="screen screen-1">
-                <strong>Question:</strong> {{ faq.question }}
+                <strong>Question:</strong> <span v-dompurify-html="faq.question" />
             </div>
             <div class="screen screen-2">
-                <strong>Answer:</strong> {{ faq.answer }}
+                <strong>Answer:</strong> <span v-dompurify-html="faq.answer" />
             </div>
         </div>
     </section>
@@ -31,33 +36,45 @@
                 faqItems: [
                     {
                         id: 1,
-                        question: 'What is MiniMecha?',
-                        answer: 'MiniMecha is a project launched by a team of gaming and crypto enthusiasts with a vision to expand blockchain based, play-to-earn gaming. This will commence with a collection of 10,000 unique NFTs on the Solana blockchain. We will let the art speak for itself.'
+                        question: 'Who are you?',
+                        answer: 'Hey, I\'m Vasilis, a creative self-taught Frontend Engineer.I am from <strong>Greece</strong> and I currently live in the Thessaloniki. I have a keen eye for design and enjoy building interactive, effect heavy javascript applications with an eye on animated content.<br>Travelling is my passion, so I am always thrilled for a new trip. '
                     },
                     {
                         id: 2,
-                        question: 'Why MiniMecha?',
-                        answer: 'We are tired of card games. It’s time to work on a game that combines NFTs and play-to-earn gaming with the best elements from the games that have defined our childhood. We want to create immersive gaming with assets players can own; supported by a strong community.'
+                        question: 'What\'s your work experience?',
+                        answer: 'I have worked in different sectors in the past, but I am currently working as a frontend engineer. I have plenty of experience offering great user experiences as a salesman. I have some experience in photo edit and design tools through my photography professional engagement before.'
                     },
                     {
                         id: 3,
-                        question: 'What network are MiniMecha NFTs on?',
-                        answer: 'MiniMecha will be released on the Solana blockchain which means no high Eth gas fees.'
+                        question: 'What\'s your strongest skills as a Frontend Engineer?',
+                        answer: 'Clean code, fast and efficient development, and a good team player. I am always looking for new challenges and opportunities to grow my skills, but i consider myself good with Vue and CSS.'
                     },
                     {
                         id: 4,
-                        question: 'How was MiniMecha created?',
-                        answer: 'Each component of the Generation 0 MiniMecha: Background, Aura, Body, Attachment, Weapon, Head, Mouth and Eye was illustrated first. These elements were then combined algorithmically to create unique Mechs.'
+                        question: 'What production projects have you been involved?',
+                        answer: `Below are some of the type of projects I 've been involved in.<br>
+                                <ul style="list-style:square;padding-left:1rem;">
+                                    <li>Custom CMS</li>
+                                    <li>Full Web Apps</li>
+                                    <li>Touch points Embedded Web App</li>
+                                    <li>Javascript HTML5 Canvas mini Games</li>
+                                    <li>Freelance Jobs as some NFT websites</li>
+                                </ul>`
                     },
                     {
                         id: 5,
-                        question: 'How much does it cost to mint a MiniMecha NFT?',
-                        answer: 'Each Generation 0 MechaSmith will cost 2 SOL to mint. While transaction fees on Solana are minimal, please allow for a further 0.1 Solana on top for the minting.'
+                        question: 'Can you tell me some skills you want to improve?',
+                        answer: `As a Frontend Engineer, I want to improve my skills in:<br>
+                                <ul style="list-style:square;padding-left:1rem;">
+                                    <li>Unit Testing</li>
+                                    <li>Animations/Transitions</li>
+                                    <li>Backend Development</li>
+                                </ul>`
                     },
                     {
                         id: 6,
-                        question: 'How many MiniMecha will be available?',
-                        answer: 'A total of 10,000 Generation 0 MiniMecha NFTs will be available for minting.<br>Since each player needs a Mech before they can play MiniMecha, we may release future generations of Mechs to support game growth or development. However this will be done on an as needed basis. Any future MiniMecha minted will not replicate Generation 0 MiniMecha.'
+                        question: 'Any there any technologies that you avoid?',
+                        answer: 'Overall I\'m pretty open to new technologies, but I\'m not afraid to try new ones. I\'m also very open to learning new languages and frameworks, but there some frameworks and libraries that I wouldn\'t like to use such as WordPress, JQuery and Angular.'
                     }
 
                 ]
@@ -109,7 +126,6 @@
 
 .main-content-title {
     font-size: var(--mobile-font-title);
-    line-height: 3.3rem;
     font-family: var(--font-headers);
     font-weight: 700;
     text-shadow: var(--text-shadow-light);
@@ -126,10 +142,12 @@
 .faq-item {
     display: flex;
     flex-direction: column;
+    max-width: 1500px;
+    margin: 0 auto;
 }
 
 .screen {
-    max-width: 250px;
+    max-width: 30ch;
     width: 100%;
     border: 3px solid #fff;
     box-shadow: var(--text-shadow-light);
@@ -161,7 +179,7 @@
     }
 
     .screen {
-        max-width: 350px;
+        max-width: 50ch;
         padding: 1.3rem;
         font-size: 1.3rem;
     }
@@ -175,7 +193,11 @@
     }
 }
 
-/* @media screen and (min-width: 1048px) {
-
-} */
+@media screen and (min-width: 1048px) {
+    .screen {
+        max-width: 60ch;
+        padding: 1.5rem;
+        font-size: 1.25rem;
+    }
+}
 </style>

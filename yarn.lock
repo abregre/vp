@@ -3474,6 +3474,11 @@ domhandler@^4.0.0, domhandler@^4.2.0:
   dependencies:
     domelementtype "^2.2.0"
 
+dompurify@^2.3.4:
+  version "2.3.5"
+  resolved "https://registry.yarnpkg.com/dompurify/-/dompurify-2.3.5.tgz#c83ed5a3ae5ce23e52efe654ea052ffb358dd7e3"
+  integrity sha512-kD+f8qEaa42+mjdOpKeztu9Mfx5bv9gVLO6K9jRx4uGvh6Wv06Srn4jr1wPNY2OOUGGSKHNFN+A8MA3v0E0QAQ==
+
 domready@1.0.8:
   version "1.0.8"
   resolved "https://registry.yarnpkg.com/domready/-/domready-1.0.8.tgz#91f252e597b65af77e745ae24dd0185d5e26d58c"
@@ -9539,6 +9544,13 @@ vue-concise-slider@^4.2.3:
   version "4.2.3"
   resolved "https://registry.yarnpkg.com/vue-concise-slider/-/vue-concise-slider-4.2.3.tgz#720dd5c98157bfe5e06180300c1d98d6cf13fa76"
   integrity sha512-UQvLD08EKSroMa6NQcwpd29UfCCs67u1k39qL9h4/15CUEqFqcueP8L5JOxYRAb2fzL0LgxwTrn8swu7/omxNg==
+
+vue-dompurify-html@^2.5.0:
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/vue-dompurify-html/-/vue-dompurify-html-2.5.0.tgz#635a266e6802e413c520bccd628d9a28c42ad0cd"
+  integrity sha512-k2ejMJmsCsREGtJFDXNwqMvvek447id5ZAOU10jm2+cmsZHXgFIEdlwDam4cU4wh0iOZM+uDmkwbVJAJtmgeVQ==
+  dependencies:
+    dompurify "^2.3.4"
 
 vue-eslint-parser@^7.0.0:
   version "7.11.0"

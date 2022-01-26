@@ -1,13 +1,13 @@
 <template>
     <div class="navbar-container">
-        <div v-scroll-to="'#aboutSection'" class="custom-btn">
+        <div v-scroll-to="'#faqSection'" class="custom-btn">
             <span class="noselect">FAQ</span>
-        </div>
-        <div v-scroll-to="'#workSection'" class="custom-btn">
-            <span class="noselect">Works</span>
         </div>
         <div v-scroll-to="'#toolSection'" class="custom-btn">
             <span class="noselect">Tools</span>
+        </div>
+        <div v-scroll-to="'#workSection'" class="custom-btn">
+            <span class="noselect">Works</span>
         </div>
         <div v-scroll-to="'#contactSection'" class="custom-btn">
             <span class="noselect">Contact</span>
@@ -85,6 +85,17 @@
 
 .custom-btn:hover::before {
     width: 100%;
+    animation: rotate 1s ease-in-out;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 @media screen and (min-width: 768px) {
