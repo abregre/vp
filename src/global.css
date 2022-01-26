@@ -30,3 +30,8 @@
     background: var(--font-color);
     color: var(--base-color);
 }
+
+.strong-text {
+    font-size: calc(var(--mobile-font-body) * 1.1);
+    font-weight: 700;
+}

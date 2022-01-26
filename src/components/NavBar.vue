@@ -71,6 +71,7 @@
     place-items: center;
     position: relative;
     user-select: none;
+    text-align: center;
 }
 
 .custom-btn::before {
@@ -85,7 +86,7 @@
 
 .custom-btn:hover::before {
     width: 100%;
-    animation: rotate 1s ease-in-out;
+    animation: rotate 0.5s ease-in-out;
 }
 
 @keyframes rotate {
@@ -94,7 +95,7 @@
     }
 
     100% {
-        transform: rotate(360deg);
+        transform: rotate(180deg);
     }
 }
 

@@ -1,15 +1,14 @@
 <template>
     <section id="faqSection" class="faq-section">
         <div class="section-header">
-            <h1 class="main-content-title">FAQ</h1>
+            <h2 class="main-content-title">FAQ</h2>
             <img
-                v-scroll-to="'#workSection'"
+                v-scroll-to="'#toolSection'"
                 :src="require('@/assets/svg/double-arrow-down.svg')"
                 alt="skip section"
                 class="skip-btn"
                 title="Skip to next section"
             >
-
         </div>
         <div
             v-for="faq in faqItems"
@@ -47,7 +46,7 @@
                     {
                         id: 3,
                         question: 'What\'s your strongest skills as a Frontend Engineer?',
-                        answer: 'Clean code, fast and efficient development, and a good team player. I am always looking for new challenges and opportunities to grow my skills, but i consider myself good with Vue and CSS.'
+                        answer: 'Clean code, fast and efficient development, and a good team player. I am always looking for new challenges and opportunities to grow my skills, but i consider myself good with the Vue Ecosystem, JavaScript and CSS.'
                     },
                     {
                         id: 4,
@@ -67,9 +66,10 @@
                         answer: `As a Frontend Engineer, I want to improve my skills in:<br>
                                 <ul style="list-style:square;padding-left:1rem;">
                                     <li>Unit Testing</li>
+                                    <li>Graph Databases</li>
                                     <li>Animations/Transitions</li>
-                                    <li>Backend Development</li>
-                                </ul>`
+                                </ul>
+                                Always interested for the entire frontend spectrum of web development, studying books for design patterns and clean arhitectures<br>`
                     },
                     {
                         id: 6,
@@ -115,7 +115,7 @@
     color: var(--font-color);
     position: relative;
     width: 90%;
-    margin: 0 auto;
+    margin: 3rem auto;
 }
 
 .section-header {
