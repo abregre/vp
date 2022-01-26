@@ -207,7 +207,7 @@
                         autoAlpha: 0,
                         duration: 0.2,
                         stagger: {
-                            each: 0.1
+                            each: 0.2
                         }
                     })
                 }
@@ -217,10 +217,10 @@
                 onEnter: batch => {
                     gsap.from(batch, {
                         autoAlpha: 0,
-                        x: '100%',
-                        duration: 0.5,
+                        x: 150,
+                        duration: 1,
                         stagger: {
-                            each: 0.5
+                            each: 0.3
                         }
                     })
                 }

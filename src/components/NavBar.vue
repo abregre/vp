@@ -9,8 +9,8 @@
         <div v-scroll-to="'#workSection'" class="custom-btn">
             <span class="noselect">Works</span>
         </div>
-        <div v-scroll-to="'#contactSection'" class="custom-btn">
-            <span class="noselect">Contact</span>
+        <div v-scroll-to="'#infoSection'" class="custom-btn">
+            <span class="noselect">Info</span>
         </div>
     </div>
 </template>
