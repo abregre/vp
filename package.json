@@ -4,7 +4,7 @@
     "private": true,
     "scripts": {
         "serve": "vue-cli-service serve --open",
-        "build": "vue-cli-service build --mode ignore-engines production",
+        "build": "vue-cli-service build --mode production",
         "lint": "eslint --ext .js,.vue src",
         "lint-style": "stylelint ./src/**/*.{vue,scss}",
         "build:dev": "vue-cli-service build --mode development",
