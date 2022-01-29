@@ -155,10 +155,9 @@ strong {
 .screen {
     max-width: 30ch;
     width: 100%;
-    border: 3px solid #fff;
     box-shadow: var(--text-shadow-light);
     padding: 1rem;
-    background: #fff;
+    background: var(--background-overlay);
     color: hsla(0, 0%, 0%, 0.75);
     font-size: 1.1rem;
     font-family: var(--font-headers);

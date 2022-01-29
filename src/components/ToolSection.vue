@@ -273,7 +273,7 @@
     max-width: 400px;
     margin: 0 auto;
     padding: 1rem;
-    background: hsla(0, 0%, 100%, 0.7);
+    background: var(--background-overlay);
     box-shadow: var(--text-shadow-light);
     border-radius: 10px;
 }
@@ -332,7 +332,7 @@
 }
 
 .book {
-    background: hsla(0, 0%, 100%, 0.7);
+    background: var(--background-overlay);
     box-shadow: var(--text-shadow-light);
     border-radius: 10px;
     padding: 0.5rem 1rem;
