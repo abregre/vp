@@ -154,11 +154,43 @@
                     </div>
                 </div>
             </div>
-
         </div>
-
     </section>
 </template>
+<script>
+    import { gsap } from 'gsap'
+    import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+    export default {
+        mounted() {
+            gsap.registerPlugin(ScrollTrigger)
+            ScrollTrigger.batch('.card', {
+                onEnter: batch => {
+                    gsap.from(batch, {
+                        autoAlpha: 0,
+                        y: 100,
+                        duration: 1,
+                        stagger: 0.2
+                    })
+                },
+                onLeave: batch => {
+                    gsap.to(batch, {
+                        y: 0,
+                        duration: 1,
+                        stagger: 0.2
+                    })
+                },
+                onEnterBack: batch => {
+                    gsap.from(batch, {
+                        y: -100,
+                        duration: 1,
+                        stagger: 0.2
+                    })
+                }
+            })
+        }
+    }
+</script>
 
 <style scoped>
 .work-section {

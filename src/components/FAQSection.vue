@@ -77,7 +77,7 @@
                     {
                         id: 6,
                         question: 'Are there any technologies that you avoid?',
-                        answer: 'Overall I\'m pretty open to new technologies, but I\'m not afraid to try new ones. I\'m also very open to learning new languages and frameworks, but there some frameworks and libraries that I wouldn\'t like to use such as WordPress, JQuery and Angular.'
+                        answer: 'Overall I\'m pretty open to new technologies, but I\'m not afraid to try new ones. I\'m also very open to learning new languages and frameworks, but there are some frameworks and libraries that I wouldn\'t like to use such as WordPress, JQuery and Angular.'
                     }
 
                 ]
