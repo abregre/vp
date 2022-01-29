@@ -10,6 +10,7 @@
         <work-section />
         <tool-section />
         <info-section />
+        <footer-bar />
     </div>
 </template>
 
@@ -19,6 +20,7 @@
     import ToolSection from '@/components/ToolSection'
     import InfoSection from '@/components/InfoSection'
     import WorkSection from '@/components/WorkSection'
+    import FooterBar from '@/components/FooterBar'
     import { gsap } from 'gsap'
 
     export default {
@@ -27,7 +29,8 @@
             FaqSection,
             ToolSection,
             InfoSection,
-            WorkSection
+            WorkSection,
+            FooterBar
         },
         data() {
             return {

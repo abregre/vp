@@ -7,14 +7,16 @@
         />
         <sound />
         <router-view />
+        <move-top />
     </div>
 </template>
 
 <script>
     import Sound from '@/components/Sound'
+    import MoveTop from '@/components/MoveTop'
     export default {
         components: {
-            Sound
+            Sound, MoveTop
         },
         data() {
             return {
@@ -111,6 +113,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
 h1,

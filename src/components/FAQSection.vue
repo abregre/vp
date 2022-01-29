@@ -3,13 +3,16 @@
         <div class="section-header">
             <h2 class="main-content-title">FAQ</h2>
             <img
-                v-scroll-to="'#toolSection'"
+                v-scroll-to="'#workSection'"
                 :src="require('@/assets/svg/double-arrow-down.svg')"
                 alt="skip section"
                 class="skip-btn"
                 title="Skip to next section"
             >
         </div>
+        <p class="faq-intro">
+            I know about pages can be really boring to read, so I decided to make a section with some frequently asked questions and answers about me. I hope you enjoy it.
+        </p>
         <div
             v-for="faq in faqItems"
             :key="faq.id"
@@ -145,6 +148,15 @@ strong {
     filter: var(--box-shadow-light);
 }
 
+.faq-intro {
+    font-size: var(--mobile-font-body);
+    line-height: 1.5;
+    margin: 2rem auto;
+    text-shadow: var(--text-shadow-light);
+    text-align: center;
+    max-width: 60ch;
+}
+
 .faq-item {
     display: flex;
     flex-direction: column;
@@ -177,6 +189,15 @@ strong {
 @media screen and (min-width: 768px) {
     .main-content-title {
         font-size: var(--tablet-font-title);
+    }
+
+    .faq-intro {
+        font-size: var(--tablet-font-body);
+        line-height: 1.5;
+        margin: 2rem auto;
+        text-shadow: var(--text-shadow-light);
+        text-align: center;
+        max-width: 70ch;
     }
 
     .faq-item {

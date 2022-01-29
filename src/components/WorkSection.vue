@@ -4,8 +4,89 @@
             <h2 class="main-content-title">WORKS</h2>
         </div>
         <div class="screen">
-            <h2>Games</h2>
-            <div class="games-container">
+            <h2 class="works-title">Websites and Apps</h2>
+            <div class="works-container">
+                <a class="project-link" href="http://minimecha.io/" target="_blank">
+                    <div class="card">
+                        <div class="card-header">
+                            <img :src="require('@/assets/work-previews/minimecha.png')" alt="preview devices image" class="card-image">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">Minimecha NFT Website</h3>
+                            <p class="card-text">
+                                Development of landing page for minimecha NFT website.
+                            </p>
+                        </div>
+                    </div>
+                </a>
+                <a class="project-link" href="https://racefederation.io" target="_blank">
+                    <div class="card">
+                        <div class="card-header">
+                            <img :src="require('@/assets/work-previews/race-federation.png')" alt="preview devices image" class="card-image">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">Race Federation NFT Website</h3>
+                            <p class="card-text">
+                                Development of the whole website and integration with Metamask for login.
+                            </p>
+                        </div>
+                    </div>
+                </a>
+                <a class="project-link" href="https://elpedisonxmas.elpedison.gr" target="_blank">
+                    <div class="card">
+                        <div class="card-header">
+                            <img :src="require('@/assets/work-previews/elpedison.png')" alt="preview devices image" class="card-image">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">ElPedison Promo contest minisite</h3>
+                            <p class="card-text">
+                                Development of the minisite for ElPedison Promo contest. Form was has validation and recaptcha v3 verification.
+                            </p>
+                        </div>
+                    </div>
+                </a>
+                <a class="project-link" href="https://cv.karelia.gr/" target="_blank">
+                    <div class="card">
+                        <div class="card-header">
+                            <img :src="require('@/assets/work-previews/karelia.png')" alt="preview devices image" class="card-image">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">Karelia CV Submission Page</h3>
+                            <p class="card-text">
+                                Custom CV submission form for Karelia's website. Developed without a design based on the current website.
+                            </p>
+                        </div>
+                    </div>
+                </a>
+                <a class="project-link" href="https://anedik.mpass.ltd" target="_blank">
+                    <div class="card">
+                        <div class="card-header">
+                            <img :src="require('@/assets/work-previews/anedik.png')" alt="preview devices image" class="card-image">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">KRITIKOS Club Card Registration</h3>
+                            <p class="card-text">
+                                Fully developed the web app without a design. 4 different pages for registration, including OTP authentication, details submission and email verification.
+                            </p>
+                        </div>
+                    </div>
+                </a>
+                <div class="card">
+                    <div class="card-header">
+                        <img :src="require('@/assets/work-previews/gaiming.png')" alt="preview devices image" class="card-image">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">GAIMING Custom CMS</h3>
+                        <p class="card-text">
+                            Fully custom cms for gaming platform GAIMING. Developed without a design.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="screen">
+            <h2 class="works-title">Games</h2>
+            <div class="works-container">
                 <div class="card">
                     <div class="card-header">
                         <img :src="require('@/assets/work-previews/combo-game-1.png')" alt="preview devices image" class="card-image">
@@ -73,33 +154,18 @@
                     </div>
                 </div>
             </div>
+
         </div>
 
     </section>
 </template>
-
-<script>
-    export default {
-        data() {
-            return {
-
-            }
-        },
-        created() {
-
-        },
-        methods: {
-
-        }
-    }
-</script>
 
 <style scoped>
 .work-section {
     color: var(--font-color);
     position: relative;
     width: 90%;
-    margin: 3rem auto 0;
+    margin: 3rem auto 5rem;
     max-width: 1400px;
 }
 
@@ -128,21 +194,32 @@
     border-radius: 10px;
 }
 
-.games-container {
+.works-container + .works-title {
+    margin-top: 2rem;
+}
+
+.works-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.project-link {
+    text-decoration: none;
+    color: hsla(0, 0%, 0%, 0.75);
 }
 
 .card {
     width: 100%;
-    max-width: 300px;
+    max-width: 280px;
+    display: grid;
+    grid-template-rows: 250px 1fr;
+    margin: 1rem;
 }
 
 .card-header {
     width: 100%;
-    min-height: 200px;
     border-radius: 10px;
     display: grid;
     place-items: center;
@@ -154,7 +231,15 @@
 }
 
 .card-body {
+    display: grid;
+    grid-template-rows: 40px 1fr;
+    align-items: flex-start;
     text-align: center;
+    padding: 1rem 0;
+}
+
+.card-text {
+    padding: 1rem 0;
 }
 
 @media screen and (min-width: 768px) {
@@ -163,8 +248,9 @@
     }
 }
 
-/*
 @media screen and (min-width: 1048px) {
-
-} */
+    .card {
+        max-width: 310px;
+    }
+}
 </style>
