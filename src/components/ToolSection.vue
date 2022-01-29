@@ -52,8 +52,6 @@
     import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
     export default {
-        components: {
-        },
         data() {
             return {
                 tools: [
@@ -235,6 +233,7 @@
     position: relative;
     width: 90%;
     min-height: 100vh;
+    max-width: 1400px;
     justify-content: center;
     align-items: center;
     margin: 3rem auto;
@@ -289,12 +288,40 @@
 .tool-icon {
     width: 100%;
     height: auto;
-    transition: transform 0.4s ease-in-out;
 }
 
 .tool:hover .tool-icon {
-    transform-style: preserve-3d;
-    transform: rotateY(360deg);
+    animation: jello-vertical 1s both;
+}
+
+@keyframes jello-vertical {
+    0% {
+        transform: scale3d(1, 1, 1);
+    }
+
+    30% {
+        transform: scale3d(0.75, 1.25, 1);
+    }
+
+    40% {
+        transform: scale3d(1.25, 0.75, 1);
+    }
+
+    50% {
+        transform: scale3d(0.85, 1.15, 1);
+    }
+
+    65% {
+        transform: scale3d(1.05, 0.95, 1);
+    }
+
+    75% {
+        transform: scale3d(0.95, 1.05, 1);
+    }
+
+    100% {
+        transform: scale3d(1, 1, 1);
+    }
 }
 
 .books-container {

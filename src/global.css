@@ -5,6 +5,7 @@
     --font-body: 'Roboto', sans-serif;
     --font-color: #fff;
     --base-color: hsl(266, 31%, 37%);
+    --base-color-hover: hsl(266, 31%, 55%);
     --mobile-font-title: 3.4rem;
     --mobile-font-body: 1.1rem;
     --tablet-font-title: 6rem;
@@ -27,8 +28,8 @@
 }
 
 ::selection {
-    background: var(--font-color);
-    color: var(--base-color);
+    background: var(--base-color);
+    color: var(--font-color);
 }
 
 .strong-text {

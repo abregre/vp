@@ -1,8 +1,8 @@
 <template>
     <section class="hero-section">
-        <div class="logo">
+        <a href="." class="logo">
             <img :src="require('@/assets/logo.png')" alt="logo">
-        </div>
+        </a>
         <div class="info-container">
             <h1 class="route-title">
                 &lt;FRONT-END <br>ENGINEER &lt;&#47;&gt;

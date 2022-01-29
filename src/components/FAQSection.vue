@@ -46,7 +46,7 @@
                     {
                         id: 3,
                         question: 'What\'s your strongest skills as a Frontend Engineer?',
-                        answer: 'Clean code, fast and efficient development, and a good team player. I am always looking for new challenges and opportunities to grow my skills, but i consider myself good with the Vue Ecosystem, JavaScript and CSS.'
+                        answer: 'Clean code, fast and efficient development, and a good team player. I am always looking for new challenges and opportunities to grow my skills, but i consider myself good with the <strong>Vue Ecosystem</strong>, <strong>JavaScript</strong> and <strong>CSS</strong>.'
                     },
                     {
                         id: 4,
@@ -116,6 +116,12 @@
     position: relative;
     width: 90%;
     margin: 3rem auto;
+    max-width: 1400px;
+}
+
+strong {
+    font-size: calc(1.1rem * 1.3);
+    font-weight: bolder;
 }
 
 .section-header {

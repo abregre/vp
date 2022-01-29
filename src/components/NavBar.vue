@@ -3,11 +3,11 @@
         <div v-scroll-to="'#faqSection'" class="custom-btn">
             <span class="noselect">FAQ</span>
         </div>
-        <div v-scroll-to="'#toolSection'" class="custom-btn">
-            <span class="noselect">Tools</span>
-        </div>
         <div v-scroll-to="'#workSection'" class="custom-btn">
             <span class="noselect">Works</span>
+        </div>
+        <div v-scroll-to="'#toolSection'" class="custom-btn">
+            <span class="noselect">Tools</span>
         </div>
         <div v-scroll-to="'#infoSection'" class="custom-btn">
             <span class="noselect">Info</span>

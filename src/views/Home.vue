@@ -7,6 +7,7 @@
             </span>
         </div>
         <faq-section />
+        <work-section />
         <tool-section />
         <info-section />
     </div>
@@ -17,6 +18,7 @@
     import FaqSection from '@/components/FAQSection'
     import ToolSection from '@/components/ToolSection'
     import InfoSection from '@/components/InfoSection'
+    import WorkSection from '@/components/WorkSection'
     import { gsap } from 'gsap'
 
     export default {
@@ -24,7 +26,8 @@
             HeroSection,
             FaqSection,
             ToolSection,
-            InfoSection
+            InfoSection,
+            WorkSection
         },
         data() {
             return {
