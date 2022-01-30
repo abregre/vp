@@ -160,37 +160,37 @@
                     {
                         id: 1,
                         title: '<span class="strong-text">Clean Code</span>: A Handbook of Agile Software Craftsmanship',
-                        author: '<span class="strong-text">Robert C. Martin</span>',
+                        author: '<a href="http://cleancoder.com" class="strong-text">Robert C. Martin</a>',
                         fileName: 'cleanCode-cover.png'
                     },
                     {
                         id: 2,
                         title: '<span class="strong-text">The Clean Coder</span>: A Code of Conduct for Professional Programmers',
-                        author: '<span class="strong-text">Robert C. Martin</span>',
+                        author: '<a href="http://cleancoder.com" class="strong-text">Robert C. Martin</a>',
                         fileName: 'cleanCoder-cover.png'
                     },
                     {
                         id: 3,
                         title: '<span class="strong-text">Refactoring</span>: Improving the Design of Existing Code, 2nd Edition',
-                        author: '<span class="strong-text">Martin Fowler</span>',
+                        author: '<a href="https://martinfowler.com" class="strong-text">Martin Fowler</a>',
                         fileName: 'refactoring-cover.png'
                     },
                     {
                         id: 4,
                         title: '<span class="strong-text">Eloquent JavaScript</span>, 3rd Edition: A Modern Introduction to Programming',
-                        author: '<span class="strong-text">Marijn Haverbeke</span>',
+                        author: '<a hred="https://marijnhaverbeke.nl" class="strong-text">Marijn Haverbeke</a>',
                         fileName: 'eloquent-cover.png'
                     },
                     {
                         id: 5,
                         title: '<span class="strong-text">Head First Design Patterns</span>, 2nd Edition',
-                        author: '<span class="strong-text">Eric Freeman</span> & <span class="strong-text">Elisabeth Robson</span>',
+                        author: '<a href="https://wickedlysmart.com" class="strong-text">Eric Freeman & Elisabeth Robson</a>',
                         fileName: 'headFirst-cover.png'
                     },
                     {
                         id: 6,
                         title: '<span class="strong-text">CSS Secrets</span>',
-                        author: '<span class="strong-text">Lea Verou</span>',
+                        author: '<a href="https://lea.verou.me" class="strong-text">Lea Verou</a>',
                         fileName: 'cssSecrets-cover.png'
                     }
                 ]
