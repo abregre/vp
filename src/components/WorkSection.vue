@@ -59,7 +59,7 @@
                     </div>
                 </a>
                 <a class="project-link" href="https://anedik.mpass.ltd" target="_blank">
-                    <div class="card">
+                    <div class="card big-screen">
                         <div class="card-header">
                             <img :src="require('@/assets/work-previews/anedik.png')" alt="preview devices image" class="card-image">
                         </div>
@@ -71,7 +71,7 @@
                         </div>
                     </div>
                 </a>
-                <div class="card">
+                <div class="card big-screen">
                     <div class="card-header">
                         <img :src="require('@/assets/work-previews/gaiming.png')" alt="preview devices image" class="card-image">
                     </div>
@@ -231,10 +231,14 @@
 
 .card {
     width: 100%;
-    max-width: 280px;
+    max-width: 400px;
     display: grid;
     grid-template-rows: 250px 1fr;
     margin: 1rem;
+}
+
+.card.big-screen {
+    max-width: 280px;
 }
 
 .card-header {
@@ -267,9 +271,4 @@
     }
 }
 
-@media screen and (min-width: 1048px) {
-    .card {
-        max-width: 310px;
-    }
-}
 </style>

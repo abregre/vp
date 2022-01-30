@@ -106,7 +106,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    box-shadow: inset 0 0 0 1500px hsla(266, 31%, 15%, 0.6);
+    box-shadow: inset 0 0 0 1500px hsla(266, 31%, 15%, 0.8);
 }
 
 * {
@@ -131,4 +131,5 @@ html,
 body {
     font-family: var(--font-body);
 }
+
 </style>
