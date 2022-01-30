@@ -80,7 +80,7 @@
     content: "";
     position: absolute;
     background-color: hsla(0, 0%, 100%, 0.7);
-    width: 0%;
+    width: 0;
     bottom: 0;
 }
 

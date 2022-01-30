@@ -52,7 +52,7 @@
     position: fixed;
     right: 0;
     top: 8vh;
-    padding: 1rem;
+    padding: 1rem 0.5rem 1rem 1rem;
     background: var(--base-color);
     border-top-left-radius: var(--border-radius);
     border-bottom-left-radius: var(--border-radius);

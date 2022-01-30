@@ -90,21 +90,14 @@
                     gsap.from(batch, {
                         autoAlpha: 0,
                         y: 200,
-                        duration: 1,
-                        stagger: 0.2
-                    })
-                },
-                onLeave: batch => {
-                    gsap.to(batch, {
-                        y: 0,
-                        duration: 1,
+                        duration: 0.5,
                         stagger: 0.2
                     })
                 },
                 onEnterBack: batch => {
                     gsap.from(batch, {
                         y: -200,
-                        duration: 1,
+                        duration: 0.5,
                         stagger: 0.2
                     })
                 }

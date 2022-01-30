@@ -12,11 +12,17 @@
             </p>
         </div>
         <nav-bar />
+        <div class="scroll-downs">
+            <div class="mousey">
+                <div class="scroller" />
+            </div>
+        </div>
     </section>
 </template>
 
 <script>
     import NavBar from '@/components/NavBar'
+
     import { gsap, TextPlugin, SteppedEase } from 'gsap/all'
     export default {
         components: {
@@ -43,11 +49,15 @@
             gsap.registerPlugin(TextPlugin)
 
             this.tml = gsap.timeline({ paused: true })
-            this.tml.from('.route-title', { autoAlpha: 0, y: 100, duration: 1, ease: 'none' })
-            this.tml.from('.logo', { autoAlpha: 0, duration: 1, ease: 'none' }, '>')
-            this.tml.from('.availability', { autoAlpha: 0, duration: 1, ease: 'none' }, '>')
+            this.tml.from('.route-title', { autoAlpha: 0, y: 100, duration: 0.5, ease: 'none' })
+            this.tml.from('.logo', { autoAlpha: 0, duration: 0.5, ease: 'none' }, '>')
+            this.tml.from('.availability', { autoAlpha: 0, duration: 0.5, ease: 'none' }, '>')
             this.tml.from('.small-cursor', { autoAlpha: 0, x: -10, yoyo: true, repeat: -1, ease: SteppedEase.config(20) }, '<')
-            this.tml.to('.principles', { text: { value: 'Web Development, Clean Code and CSS.' }, duration: 4, ease: 'none' }, '>')
+            this.tml.to('.principles', { text: { value: 'Web Development, Clean Code and CSS.' }, duration: 3, ease: 'none' }, '>')
+            this.tml.from('.scroll-downs', { autoAlpha: 0, y: 100, duration: 1, ease: 'none' }, '>')
+        },
+        methods: {
+
         }
     }
 </script>
@@ -145,6 +155,56 @@ p {
     p {
         font-size: 1.5rem;
         padding-left: 1rem;
+    }
+
+    .scroll-downs {
+        position: absolute;
+        bottom: 5vh;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 24px;
+        height: 45px;
+    }
+
+    .hide {
+        display: none;
+    }
+
+    .mousey {
+        width: 3px;
+        padding: 7px 12px;
+        height: 35px;
+        border: 2px solid #fff;
+        border-radius: 25px;
+        opacity: 0.75;
+        box-sizing: content-box;
+    }
+
+    .scroller {
+        width: 3px;
+        height: 10px;
+        border-radius: 25%;
+        background-color: #fff;
+        animation-name: scroll;
+        animation-duration: 2s;
+        animation-timing-function: cubic-bezier(0.15, 0.41, 0.69, 0.94);
+        animation-iteration-count: infinite;
+    }
+
+    @keyframes scroll {
+        0% {
+            opacity: 0;
+        }
+
+        10% {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        100% {
+            transform: translateY(8px);
+            opacity: 0;
+        }
     }
 }
 
