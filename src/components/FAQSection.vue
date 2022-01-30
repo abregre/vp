@@ -11,7 +11,7 @@
             >
         </div>
         <p class="faq-intro">
-            I know about pages can be really boring to read, so I decided to make a section with some frequently asked questions and answers about me. I hope you enjoy it.
+            I know, "About" pages can be really boring to read, so I decided to make a section with some frequently asked questions and answers about me. I hope you enjoy it.
         </p>
         <div
             v-for="faq in faqItems"
@@ -39,12 +39,12 @@
                     {
                         id: 1,
                         question: 'Who are you?',
-                        answer: 'Hey, I\'m Vasilis, a creative self-taught Frontend Engineer.I am from <strong>Greece</strong> and I currently live in the Thessaloniki. I have a keen eye for design and enjoy building interactive, effect heavy javascript applications with an eye on animated content.<br>Travelling is my passion, so I am always thrilled for a new trip. '
+                        answer: 'Hey, I\'m Vasilis, a creative self-taught Frontend Engineer.I am from <strong>Greece</strong> and I live in the Thessaloniki. I have a keen eye for design and enjoy building interactive, effect heavy javascript applications with an eye on animated content.<br>Travelling is my passion, so I am always thrilled for a new trip. '
                     },
                     {
                         id: 2,
                         question: 'What\'s your work experience?',
-                        answer: 'I have worked in different sectors in the past, but I am currently working as a frontend engineer. I have plenty of experience offering great user experiences as a salesman. I have some experience in photo edit and design tools through my photography professional engagement before.'
+                        answer: 'I have worked in different sectors in the past, but I am currently working as a frontend web developer. I have plenty of experience offering great user experiences as a salesman. I have some experience in photo edit and design tools through my photography professional engagement before.'
                     },
                     {
                         id: 3,
@@ -54,7 +54,7 @@
                     {
                         id: 4,
                         question: 'What production projects have you been involved?',
-                        answer: `Below are some of the type of projects I 've been involved in.<br>
+                        answer: `Below are some of the type of projects I've been involved in.<br>
                                 <ul style="list-style:square;padding-left:1rem;">
                                     <li>Custom CMS</li>
                                     <li>Full Web Apps</li>
@@ -86,6 +86,7 @@
         mounted() {
             gsap.registerPlugin(ScrollTrigger)
             ScrollTrigger.batch('.faq-item', {
+                once: true,
                 onEnter: batch => {
                     gsap.from(batch, {
                         autoAlpha: 0,
@@ -165,6 +166,7 @@ strong {
     background: var(--background-overlay);
     color: hsla(0, 0%, 0%, 0.75);
     font-size: 1.1rem;
+    line-height: 1.5;
     font-family: var(--font-headers);
     border-radius: 10px;
 }

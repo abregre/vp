@@ -62,10 +62,10 @@
 
 .custom-btn {
     cursor: pointer;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     font-weight: bold;
     width: 100%;
-    max-width: 90px;
+    max-width: 80px;
     min-height: 40px;
     display: grid;
     place-items: center;
@@ -101,7 +101,7 @@
 
 @media screen and (min-width: 768px) {
     .custom-btn {
-        font-size: 1.5rem;
+        font-size: 1.75rem;
     }
 }
 

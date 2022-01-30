@@ -58,7 +58,7 @@
             ScrollTrigger.create({
                 trigger: '#infoSection',
                 start: 'top top',
-                end: 'bottom bottom',
+                end: 'center center',
                 once: true,
                 onEnter: () => {
                     gsap.from('.screen', {
