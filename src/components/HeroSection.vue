@@ -164,6 +164,7 @@ p {
         transform: translateX(-50%);
         width: 24px;
         height: 45px;
+        user-select: none;
     }
 
     .hide {
