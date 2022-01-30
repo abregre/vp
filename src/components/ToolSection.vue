@@ -178,7 +178,7 @@
                     {
                         id: 4,
                         title: '<span class="strong-text">Eloquent JavaScript</span>, 3rd Edition: A Modern Introduction to Programming',
-                        author: '<a hred="https://marijnhaverbeke.nl" class="strong-text">Marijn Haverbeke</a>',
+                        author: '<a href="https://marijnhaverbeke.nl" class="strong-text">Marijn Haverbeke</a>',
                         fileName: 'eloquent-cover.png'
                     },
                     {
