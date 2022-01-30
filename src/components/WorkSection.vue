@@ -165,24 +165,11 @@
         mounted() {
             gsap.registerPlugin(ScrollTrigger)
             ScrollTrigger.batch('.card', {
+                once: true,
                 onEnter: batch => {
                     gsap.from(batch, {
                         autoAlpha: 0,
                         y: 100,
-                        duration: 1,
-                        stagger: 0.2
-                    })
-                },
-                onLeave: batch => {
-                    gsap.to(batch, {
-                        y: 0,
-                        duration: 1,
-                        stagger: 0.2
-                    })
-                },
-                onEnterBack: batch => {
-                    gsap.from(batch, {
-                        y: -100,
                         duration: 1,
                         stagger: 0.2
                     })

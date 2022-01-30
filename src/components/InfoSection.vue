@@ -6,7 +6,6 @@
         <div class="screen social-container">
             <h3>Social Links</h3>
             <div class="social-container-links">
-
                 <a href="https://github.com/abregre" class="social-link" target="_blank">
                     <img :src="require('@/assets/svg/social-icons/github-logo.svg')" alt="Github Link">
                 </a>
@@ -48,6 +47,31 @@
         </div>
     </section>
 </template>
+
+<script>
+    import { gsap } from 'gsap'
+    import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+    export default {
+        mounted() {
+            gsap.registerPlugin(ScrollTrigger)
+            ScrollTrigger.create({
+                trigger: '#infoSection',
+                start: 'top top',
+                end: 'bottom bottom',
+                once: true,
+                onEnter: () => {
+                    gsap.from('.screen', {
+                        duration: 1,
+                        autoAlpha: 0,
+                        y: 100,
+                        ease: 'none'
+                    })
+                }
+            })
+        }
+    }
+</script>
 
 <style scoped>
 .info-section {

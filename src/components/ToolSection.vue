@@ -200,6 +200,7 @@
             gsap.registerPlugin(ScrollTrigger)
 
             ScrollTrigger.batch('.tool', {
+                once: true,
                 onEnter: batch => {
                     gsap.from(batch, {
                         autoAlpha: 0,
@@ -212,6 +213,7 @@
             })
 
             ScrollTrigger.batch('.book', {
+                once: true,
                 onEnter: batch => {
                     gsap.from(batch, {
                         autoAlpha: 0,
