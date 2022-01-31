@@ -39,17 +39,17 @@
                     {
                         id: 1,
                         question: 'Who are you?',
-                        answer: 'Hey, I\'m Vasilis, a creative self-taught Frontend Engineer.I am from <strong>Greece</strong> and I live in the Thessaloniki. I have a keen eye for design and enjoy building interactive, effect heavy javascript applications with an eye on animated content.<br>Travelling is my passion, so I am always thrilled for a new trip. '
+                        answer: 'Hey, I\'m Vasilis, a creative self-taught Frontend Engineer.I am from <strong>Greece</strong> and I live in Thessaloniki. I have a keen eye for design and enjoy building interactive, effect heavy javascript applications with an eye on animated content.<br>Travelling is my passion, so I am always thrilled for a new trip. '
                     },
                     {
                         id: 2,
                         question: 'What\'s your work experience?',
-                        answer: 'I have worked in different sectors in the past, but I am currently working as a frontend web developer. I have plenty of experience offering great user experiences as a salesman. I have some experience in photo edit and design tools through my photography professional engagement before.'
+                        answer: 'I have worked in different sectors in the past, but I am currently working as a frontend web developer. I have plenty of experience offering great user experiences as a salesman. Also i my photography background helped me aquire skills in photo editing and design tools.'
                     },
                     {
                         id: 3,
                         question: 'What\'s your strongest skills as a Frontend Engineer?',
-                        answer: 'Clean code, fast and efficient development, and a good team player. I am always looking for new challenges and opportunities to grow my skills, but i consider myself good with the <strong>Vue Ecosystem</strong>, <strong>JavaScript</strong> and <strong>CSS</strong>.'
+                        answer: 'Clean code, fast and efficient development, and a good team player. I am always looking for new challenges and opportunities to grow my skills, but I consider myself being comfortable with the <strong>Vue Ecosystem</strong>, <strong>JavaScript</strong> and <strong>CSS</strong>.'
                     },
                     {
                         id: 4,
