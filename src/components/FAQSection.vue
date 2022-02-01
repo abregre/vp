@@ -72,7 +72,7 @@
                                     <li>GraphQL</li>
                                     <li>Animations/Transitions</li>
                                 </ul>
-                                Always interested in the entire frontend spectrum of web development, studying books for design patterns and clean arhitectures<br>`
+                                Always interested in the entire frontend spectrum of web development, studying books for design patterns and clean architecture<br>`
                     },
                     {
                         id: 6,
