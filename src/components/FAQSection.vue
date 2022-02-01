@@ -49,7 +49,7 @@
                     {
                         id: 3,
                         question: 'What\'s your strongest skills as a Frontend Engineer?',
-                        answer: 'Clean code, fast and efficient development and a good team player. I am always looking for new challenges and opportunities to grow my skills, but I consider myself being comfortable with the <strong>Vue Ecosystem</strong>, <strong>JavaScript</strong> and <strong>CSS</strong>.'
+                        answer: 'Clean code, creativity and problem solving. I am always looking for new challenges and opportunities to grow my skills, but I consider myself being comfortable with the <strong>Vue Ecosystem</strong>, <strong>JavaScript</strong> and <strong>CSS</strong>.'
                     },
                     {
                         id: 4,
