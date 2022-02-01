@@ -44,7 +44,7 @@
                     {
                         id: 2,
                         question: 'What\'s your work experience?',
-                        answer: 'I have worked in different sectors in the past, but I am currently working as a frontend web developer. I have plenty of experience offering great user experiences as a salesman. Also my photography background helped me aquire skills in photo editing and design tools.'
+                        answer: 'I have worked in different sectors in the past, but I am currently working as a frontend web developer. I have plenty of experience offering great user experiences as a salesman. Also my photography background helped me acquire some skills in photo editing and design tools.'
                     },
                     {
                         id: 3,
