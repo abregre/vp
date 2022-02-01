@@ -44,16 +44,16 @@
                     {
                         id: 2,
                         question: 'What\'s your work experience?',
-                        answer: 'I have worked in different sectors in the past, but I am currently working as a frontend web developer. I have plenty of experience offering great user experiences as a salesman. Also i my photography background helped me aquire skills in photo editing and design tools.'
+                        answer: 'I have worked in different sectors in the past, but I am currently working as a frontend web developer. I have plenty of experience offering great user experiences as a salesman. Also my photography background helped me aquire skills in photo editing and design tools.'
                     },
                     {
                         id: 3,
                         question: 'What\'s your strongest skills as a Frontend Engineer?',
-                        answer: 'Clean code, fast and efficient development, and a good team player. I am always looking for new challenges and opportunities to grow my skills, but I consider myself being comfortable with the <strong>Vue Ecosystem</strong>, <strong>JavaScript</strong> and <strong>CSS</strong>.'
+                        answer: 'Clean code, fast and efficient development and a good team player. I am always looking for new challenges and opportunities to grow my skills, but I consider myself being comfortable with the <strong>Vue Ecosystem</strong>, <strong>JavaScript</strong> and <strong>CSS</strong>.'
                     },
                     {
                         id: 4,
-                        question: 'What production projects have you been involved?',
+                        question: 'What production projects have you been involved in?',
                         answer: `Below are some of the type of projects I've been involved in.<br>
                                 <ul style="list-style:square;padding-left:1rem;">
                                     <li>Custom CMS</li>
@@ -72,7 +72,7 @@
                                     <li>Graph Databases</li>
                                     <li>Animations/Transitions</li>
                                 </ul>
-                                Always interested for the entire frontend spectrum of web development, studying books for design patterns and clean arhitectures<br>`
+                                Always interested in the entire frontend spectrum of web development, studying books for design patterns and clean arhitectures<br>`
                     },
                     {
                         id: 6,
