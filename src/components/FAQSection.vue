@@ -60,7 +60,7 @@
                                     <li>Full Web Apps</li>
                                     <li>Touch points Embedded Web App</li>
                                     <li>Javascript HTML5 Canvas mini Games</li>
-                                    <li>Freelance Jobs as some NFT websites</li>
+                                    <li>Freelance Jobs</li>
                                 </ul>`
                     },
                     {
@@ -69,7 +69,7 @@
                         answer: `As a Frontend Engineer, I want to improve my skills in:<br>
                                 <ul style="list-style:square;padding-left:1rem;">
                                     <li>Unit Testing</li>
-                                    <li>Graph Databases</li>
+                                    <li>GraphQL</li>
                                     <li>Animations/Transitions</li>
                                 </ul>
                                 Always interested in the entire frontend spectrum of web development, studying books for design patterns and clean arhitectures<br>`
