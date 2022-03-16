@@ -6,7 +6,7 @@
         <div class="screen">
             <h2 class="works-title">Websites and Apps</h2>
             <div class="works-container">
-                <!-- <a class="project-link" href="http://minimecha.io/" target="_blank">
+                <a class="project-link" href="http://minimecha.io/" target="_blank">
                     <div class="card">
                         <div class="card-header">
                             <img :src="require('@/assets/work-previews/minimecha.png')" alt="preview devices image" class="card-image">
@@ -31,7 +31,7 @@
                             </p>
                         </div>
                     </div>
-                </a> -->
+                </a>
                 <a class="project-link" href="https://elpedisonxmas.elpedison.gr" target="_blank">
                     <div class="card">
                         <div class="card-header">
