@@ -19,19 +19,6 @@
                         </div>
                     </div>
                 </a>
-                <a class="project-link" href="https://racefederation.io" target="_blank">
-                    <div class="card">
-                        <div class="card-header">
-                            <img :src="require('@/assets/work-previews/race-federation.png')" alt="preview devices image" class="card-image">
-                        </div>
-                        <div class="card-body">
-                            <h3 class="card-title">Race Federation NFT Website</h3>
-                            <p class="card-text">
-                                Development of the whole website and integration with Metamask for login.
-                            </p>
-                        </div>
-                    </div>
-                </a>
                 <a class="project-link" href="https://elpedisonxmas.elpedison.gr" target="_blank">
                     <div class="card">
                         <div class="card-header">
@@ -59,7 +46,7 @@
                     </div>
                 </a>
                 <a class="project-link" href="https://anedik.mpass.ltd" target="_blank">
-                    <div class="card big-screen">
+                    <div class="card">
                         <div class="card-header">
                             <img :src="require('@/assets/work-previews/anedik.png')" alt="preview devices image" class="card-image">
                         </div>
@@ -71,17 +58,19 @@
                         </div>
                     </div>
                 </a>
-                <div class="card big-screen">
-                    <div class="card-header">
-                        <img :src="require('@/assets/work-previews/gaiming.png')" alt="preview devices image" class="card-image">
+                <a class="project-link" href="https://my-market-gaiming.mpass.ltd/app" target="_blank">
+                    <div class="card">
+                        <div class="card-header">
+                            <img :src="require('@/assets/work-previews/my-market.png')" alt="preview devices image" class="card-image">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">Cycling Gaiming Platform</h3>
+                            <p class="card-text">
+                                Development of the web app for the Cycling Gaiming Platform of MyMarket.
+                            </p>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <h3 class="card-title">GAIMING Custom CMS</h3>
-                        <p class="card-text">
-                            Fully custom cms for gaming platform GAIMING. Developed without a design.
-                        </p>
-                    </div>
-                </div>
+                </a>
             </div>
         </div>
         <div class="screen">
