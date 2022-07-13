@@ -99,10 +99,11 @@
 </script>
 
 <style>
+
 @import '~@/global.css';
 
 #app {
-    background: url('~@/assets/hero-image.jpg');
+    background: url('~@/assets/hero-image2.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
