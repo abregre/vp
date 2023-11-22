@@ -6,28 +6,28 @@
         <div class="screen">
             <h2 class="works-title">Websites and Apps</h2>
             <div class="works-container">
-                <a class="project-link" href="http://minimecha.io/" target="_blank">
+                <a class="project-link" href="https://opaponlinestars.opap.gr" target="_blank">
                     <div class="card">
                         <div class="card-header">
-                            <img :src="require('@/assets/work-previews/minimecha.png')" alt="preview devices image" class="card-image">
+                            <img :src="require('@/assets/work-previews/onlinestars.png')" alt="preview devices image" class="card-image">
                         </div>
                         <div class="card-body">
-                            <h3 class="card-title">Minimecha NFT Website</h3>
+                            <h3 class="card-title">OPAP Online Stars</h3>
                             <p class="card-text">
-                                Development of landing page for minimecha NFT website.
+                                Frontend development of the minisite for OPAP Online Stars. The site is fully responsive with many third-party integrations. The project also includes a custom CMS for content and theming management.
                             </p>
                         </div>
                     </div>
                 </a>
-                <a class="project-link" href="https://elpedisonxmas.elpedison.gr" target="_blank">
+                <a class="project-link" href="https://frawards.fra-alliance.com/web" target="_blank">
                     <div class="card">
                         <div class="card-header">
-                            <img :src="require('@/assets/work-previews/elpedison.png')" alt="preview devices image" class="card-image">
+                            <img :src="require('@/assets/work-previews/fralliance.png')" alt="preview devices image" class="card-image">
                         </div>
                         <div class="card-body">
-                            <h3 class="card-title">ElPedison Promo contest minisite</h3>
+                            <h3 class="card-title">Fralliance</h3>
                             <p class="card-text">
-                                Development of the minisite for ElPedison Promo contest. Form was has validation and recaptcha v3 verification.
+                                Frontend development of the minisite for the FRAlliance Awards. The site is fully responsive and many custom features. The project also includes a custom CMS for content and theming management and kiosk app for touchpoint kiosk hardware.
                             </p>
                         </div>
                     </div>
