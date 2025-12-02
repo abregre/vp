@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://web.resource.org/cc/" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:svg="http://www.w3.org/2000/svg" id="svg1878" viewBox="0 0 33.332 45.636" version="1.0">
+  <defs id="defs3">
+    <linearGradient id="linearGradient11462">
+      <stop id="stop11464" stop-color="#fff" offset="0"/>
+      <stop id="stop11466" stop-color="#fff" offset="1"/>
+    </linearGradient>
+    <linearGradient id="linearGradient2895" x1="-485.63" xlink:href="#linearGradient11462" gradientUnits="userSpaceOnUse" y1="358.67" gradientTransform="matrix(0 -.80139 1.2478 0 0 0)" x2="-505.83" y2="337.6"/>
+    <linearGradient id="linearGradient2897" x1="-456.45" xlink:href="#linearGradient11462" gradientUnits="userSpaceOnUse" y1="358.81" gradientTransform="matrix(0 -.80139 1.2478 0 0 0)" x2="-476.01" y2="338"/>
+  </defs>
+  <g id="layer1" transform="translate(-345.11 -361.27)">
+    <g id="g9853" stroke-linejoin="round" transform="translate(-73.14 -1.6619)" stroke="#fff" stroke-linecap="round" stroke-width="1.75">
+      <path id="path9855" style="color:#fff" fill="url(#linearGradient2895)" d="m419.13 403.56l4.13 4.13 11.7-11.7 11.59 11.59 4.16-4.16-15.72-15.72-15.86 15.86z"/>
+      <path id="path9857" style="color:#fff" fill="url(#linearGradient2897)" d="m419.13 379.67l4.13 4.13 11.7-11.7 11.59 11.59 4.16-4.17-15.72-15.71-15.86 15.86z"/>
+    </g>
+  </g>
+</svg>
