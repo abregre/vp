@@ -14,7 +14,7 @@
                     class="tool"
                 >
                     <img
-                        :src="require('@/assets/svg/tool-logos/' + tool.fileName)"
+                        :src="logos['/src/assets/svg/tool-logos/' + tool.fileName]"
                         :alt="tool.name"
                         :title="tool.name"
                         class="tool-icon"
@@ -33,7 +33,7 @@
                     class="book"
                 >
                     <img
-                        :src="require('@/assets/covers/' + book.fileName)"
+                        :src="covers['/src/assets/covers/' + book.fileName]"
                         :alt="book.title"
                         class="book-cover"
                     >
@@ -51,9 +51,14 @@
     import { gsap } from 'gsap'
     import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
+    const logos = import.meta.glob('@/assets/svg/tool-logos/*.svg', { eager: true, import: 'default' })
+    const covers = import.meta.glob('@/assets/covers/*.png', { eager: true, import: 'default' })
+
     export default {
         data() {
             return {
+                logos,
+                covers,
                 tools: [
                     {
                         id: 1,

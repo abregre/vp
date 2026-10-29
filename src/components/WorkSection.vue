@@ -9,7 +9,7 @@
                 <a class="project-link" href="https://opaponlinestars.opap.gr" target="_blank">
                     <div class="card">
                         <div class="card-header">
-                            <img :src="require('@/assets/work-previews/onlinestars.png')" alt="preview devices image" class="card-image">
+                            <img src="@/assets/work-previews/onlinestars.png" alt="preview devices image" class="card-image">
                         </div>
                         <div class="card-body">
                             <h3 class="card-title">OPAP Online Stars</h3>
@@ -22,7 +22,7 @@
                 <a class="project-link" href="https://frawards.fra-alliance.com/web" target="_blank">
                     <div class="card">
                         <div class="card-header">
-                            <img :src="require('@/assets/work-previews/fralliance.png')" alt="preview devices image" class="card-image">
+                            <img src="@/assets/work-previews/fralliance.png" alt="preview devices image" class="card-image">
                         </div>
                         <div class="card-body">
                             <h3 class="card-title">Fralliance</h3>
@@ -35,7 +35,7 @@
                 <a class="project-link" href="https://cv.karelia.gr/" target="_blank">
                     <div class="card">
                         <div class="card-header">
-                            <img :src="require('@/assets/work-previews/karelia.png')" alt="preview devices image" class="card-image">
+                            <img src="@/assets/work-previews/karelia.png" alt="preview devices image" class="card-image">
                         </div>
                         <div class="card-body">
                             <h3 class="card-title">Karelia CV Submission Page</h3>
@@ -48,7 +48,7 @@
                 <a class="project-link" href="https://anedik.mpass.ltd" target="_blank">
                     <div class="card">
                         <div class="card-header">
-                            <img :src="require('@/assets/work-previews/anedik.png')" alt="preview devices image" class="card-image">
+                            <img src="@/assets/work-previews/anedik.png" alt="preview devices image" class="card-image">
                         </div>
                         <div class="card-body">
                             <h3 class="card-title">KRITIKOS Club Card Registration</h3>
@@ -61,7 +61,7 @@
                 <a class="project-link" href="https://my-market-gaiming.mpass.ltd/app" target="_blank">
                     <div class="card">
                         <div class="card-header">
-                            <img :src="require('@/assets/work-previews/my-market.png')" alt="preview devices image" class="card-image">
+                            <img src="@/assets/work-previews/my-market.png" alt="preview devices image" class="card-image">
                         </div>
                         <div class="card-body">
                             <h3 class="card-title">Cycling Gaiming Platform</h3>
@@ -78,7 +78,7 @@
             <div class="works-container">
                 <div class="card">
                     <div class="card-header">
-                        <img :src="require('@/assets/work-previews/combo-game-1.png')" alt="preview devices image" class="card-image">
+                        <img src="@/assets/work-previews/combo-game-1.png" alt="preview devices image" class="card-image">
                     </div>
                     <div class="card-body">
                         <h3 class="card-title">Drag N Drop Game</h3>
@@ -89,7 +89,7 @@
                 </div>
                 <div class="card">
                     <div class="card-header">
-                        <img :src="require('@/assets/work-previews/combo-game-2.png')" alt="preview devices image" class="card-image">
+                        <img src="@/assets/work-previews/combo-game-2.png" alt="preview devices image" class="card-image">
                     </div>
                     <div class="card-body">
                         <h3 class="card-title">Word Completion Game</h3>
@@ -100,7 +100,7 @@
                 </div>
                 <div class="card">
                     <div class="card-header">
-                        <img :src="require('@/assets/work-previews/combo-game-3.png')" alt="preview devices image" class="card-image">
+                        <img src="@/assets/work-previews/combo-game-3.png" alt="preview devices image" class="card-image">
                     </div>
                     <div class="card-body">
                         <h3 class="card-title">Video Quiz Game</h3>
@@ -111,7 +111,7 @@
                 </div>
                 <div class="card">
                     <div class="card-header">
-                        <img :src="require('@/assets/work-previews/combo-game-4.png')" alt="preview devices image" class="card-image">
+                        <img src="@/assets/work-previews/combo-game-4.png" alt="preview devices image" class="card-image">
                     </div>
                     <div class="card-body">
                         <h3 class="card-title">Catcher Game</h3>
@@ -122,7 +122,7 @@
                 </div>
                 <div class="card">
                     <div class="card-header">
-                        <img :src="require('@/assets/work-previews/combo-game-5.png')" alt="preview devices image" class="card-image">
+                        <img src="@/assets/work-previews/combo-game-5.png" alt="preview devices image" class="card-image">
                     </div>
                     <div class="card-body">
                         <h3 class="card-title">Find the Differences Game</h3>
@@ -133,7 +133,7 @@
                 </div>
                 <div class="card">
                     <div class="card-header">
-                        <img :src="require('@/assets/work-previews/combo-game-6.png')" alt="preview devices image" class="card-image">
+                        <img src="@/assets/work-previews/combo-game-6.png" alt="preview devices image" class="card-image">
                     </div>
                     <div class="card-body">
                         <h3 class="card-title">Memory Cards Game</h3>

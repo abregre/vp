@@ -1,6 +1,6 @@
 <template>
     <div v-if="isScrolled" class="scroll-top" title="Scroll to top" @click="moveUp">
-        <img :src="require('@/assets/svg/double-arrow-up.svg')" alt="scroll to top">
+        <img src="@/assets/svg/double-arrow-up.svg" alt="scroll to top">
     </div>
 </template>
 <script>

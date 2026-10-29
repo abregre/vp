@@ -1,22 +1,24 @@
 <template>
     <div class="navbar-container">
-        <div v-scroll-to="'#faqSection'" class="custom-btn">
+        <div class="custom-btn" @click="scrollTo('#faqSection')">
             <span class="noselect">FAQ</span>
         </div>
-        <div v-scroll-to="'#workSection'" class="custom-btn">
+        <div class="custom-btn" @click="scrollTo('#workSection')">
             <span class="noselect">Works</span>
         </div>
-        <div v-scroll-to="'#toolSection'" class="custom-btn">
+        <div class="custom-btn" @click="scrollTo('#toolSection')">
             <span class="noselect">Tools</span>
         </div>
-        <div v-scroll-to="'#infoSection'" class="custom-btn">
+        <div class="custom-btn" @click="scrollTo('#infoSection')">
             <span class="noselect">Info</span>
         </div>
     </div>
 </template>
 
 <script>
+    import { markRaw } from 'vue'
     import { gsap } from 'gsap'
+    import { store } from '@/store'
     export default {
         data() {
             return {
@@ -25,7 +27,7 @@
         },
         computed: {
             hasBeenClicked() {
-                return this.$store.getters.hasBeenClickedOnce
+                return store.clickedOnce
             }
         },
         watch: {
@@ -36,7 +38,7 @@
             }
         },
         mounted() {
-            this.tml = gsap.timeline({ paused: true, delay: 1 })
+            this.tml = markRaw(gsap.timeline({ paused: true, delay: 1 }))
             gsap.utils.toArray('.custom-btn').forEach((btn, i) => {
                 this.tml.from(btn, {
                     duration: 1,
@@ -44,6 +46,11 @@
                     ease: 'none'
                 }, i * 0.1)
             })
+        },
+        methods: {
+            scrollTo(selector) {
+                document.querySelector(selector).scrollIntoView({ behavior: 'smooth' })
+            }
         }
     }
 </script>

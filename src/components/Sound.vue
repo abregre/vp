@@ -1,11 +1,13 @@
 <template>
     <div class="sound" :class="{'is-muted': isMuted}" @click="toggleMute">
-        <img v-if="isMuted" class="sound-off" :src="require('@/assets/mute.png')" alt="muted">
-        <img v-else class="sound-on" :src="require('@/assets/unmute.png')" alt="unmuted">
+        <img v-if="isMuted" class="sound-off" src="@/assets/mute.png" alt="muted">
+        <img v-else class="sound-on" src="@/assets/unmute.png" alt="unmuted">
     </div>
 </template>
 <script>
+    import { markRaw } from 'vue'
     import { gsap } from 'gsap'
+    import { store, toggleMute } from '@/store'
     export default {
         data() {
             return {
@@ -14,10 +16,10 @@
         },
         computed: {
             isMuted() {
-                return this.$store.getters.isMuted
+                return store.muted
             },
             hasBeenClicked() {
-                return this.$store.getters.hasBeenClickedOnce
+                return store.clickedOnce
             }
         },
         watch: {
@@ -28,7 +30,7 @@
             }
         },
         mounted() {
-            this.tml = gsap.timeline({ paused: true })
+            this.tml = markRaw(gsap.timeline({ paused: true }))
             this.tml.from('.sound', {
                 duration: 1,
                 x: 100,
@@ -38,7 +40,7 @@
         },
         methods: {
             toggleMute() {
-                this.$store.dispatch('toggleMute')
+                toggleMute()
             }
         }
     }

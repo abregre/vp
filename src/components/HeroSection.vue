@@ -1,7 +1,7 @@
 <template>
     <section class="hero-section">
         <div class="logo">
-            <img :src="require('@/assets/logo.png')" alt="logo">
+            <img src="@/assets/logo.png" alt="logo">
         </div>
         <div class="info-container">
             <h1 class="route-title">
@@ -21,8 +21,10 @@
 </template>
 
 <script>
-    import NavBar from '@/components/NavBar'
+    import NavBar from '@/components/NavBar.vue'
 
+    import { store } from '@/store'
+    import { markRaw } from 'vue'
     import { gsap, TextPlugin, SteppedEase } from 'gsap/all'
     export default {
         components: {
@@ -35,7 +37,7 @@
         },
         computed: {
             hasBeenClicked() {
-                return this.$store.getters.hasBeenClickedOnce
+                return store.clickedOnce
             }
         },
         watch: {
@@ -48,7 +50,7 @@
         mounted() {
             gsap.registerPlugin(TextPlugin)
 
-            this.tml = gsap.timeline({ paused: true })
+            this.tml = markRaw(gsap.timeline({ paused: true }))
             this.tml.from('.route-title', { autoAlpha: 0, y: 100, duration: 0.5, ease: 'none' })
             this.tml.from('.logo', { autoAlpha: 0, duration: 0.5, ease: 'none' }, '>')
             this.tml.from('.availability', { autoAlpha: 0, duration: 0.5, ease: 'none' }, '>')

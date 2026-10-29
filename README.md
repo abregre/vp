@@ -1,26 +1,16 @@
-# my-portfolio-2021 WIP
+# my-portfolio-2021
 
 [Portfolio Link](https://abregre.github.io/vp/)
 
-## Project setup
+## Commands
+
 ```
-yarn install
+yarn              # install dependencies
+yarn dev          # dev server
+yarn build        # production build to dist/
+yarn preview      # preview the production build
+yarn lint         # lint scripts
+yarn lint-style   # lint styles
 ```
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
-
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+A push to `main` deploys automatically through GitHub Pages Actions.

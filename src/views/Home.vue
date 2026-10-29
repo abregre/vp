@@ -15,13 +15,14 @@
 </template>
 
 <script>
-    import HeroSection from '@/components/HeroSection'
-    import FaqSection from '@/components/FAQSection'
-    import ToolSection from '@/components/ToolSection'
-    import InfoSection from '@/components/InfoSection'
-    import WorkSection from '@/components/WorkSection'
-    import FooterBar from '@/components/FooterBar'
+    import HeroSection from '@/components/HeroSection.vue'
+    import FaqSection from '@/components/FAQSection.vue'
+    import ToolSection from '@/components/ToolSection.vue'
+    import InfoSection from '@/components/InfoSection.vue'
+    import WorkSection from '@/components/WorkSection.vue'
+    import FooterBar from '@/components/FooterBar.vue'
     import { gsap } from 'gsap'
+    import { store, toggleMute } from '@/store'
 
     export default {
         components: {
@@ -39,7 +40,7 @@
         },
         computed: {
             hasBeenClicked() {
-                return this.$store.getters.hasBeenClickedOnce
+                return store.clickedOnce
             }
         },
         mounted() {
@@ -52,7 +53,7 @@
         },
         methods: {
             startAudio() {
-                this.$store.dispatch('toggleMute')
+                toggleMute()
             }
         }
     }

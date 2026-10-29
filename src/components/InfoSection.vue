@@ -7,13 +7,13 @@
             <h3>Social Links</h3>
             <div class="social-container-links">
                 <a href="https://github.com/abregre" class="social-link" target="_blank">
-                    <img :src="require('@/assets/svg/social-icons/github-logo.svg')" alt="Github Link">
+                    <img src="@/assets/svg/social-icons/github-logo.svg" alt="Github Link">
                 </a>
                 <a href="https://www.linkedin.com/in/vpaparidis/" class="social-link" target="_blank">
-                    <img :src="require('@/assets/svg/social-icons/linkedin-logo.svg')" alt="Linkedin Link">
+                    <img src="@/assets/svg/social-icons/linkedin-logo.svg" alt="Linkedin Link">
                 </a>
                 <a href="https://stackoverflow.com/users/12664279/abregre" class="social-link" target="_blank">
-                    <img :src="require('@/assets/svg/social-icons/stackoverflow-logo.svg')" alt="Stackoverflow Link">
+                    <img src="@/assets/svg/social-icons/stackoverflow-logo.svg" alt="Stackoverflow Link">
                 </a>
             </div>
         </div>

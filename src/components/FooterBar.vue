@@ -1,6 +1,6 @@
 <template>
     <div class="footer">
-        Made with <img :src="require('@/assets/svg/heart-icon.svg')" alt="heart" class="heart"> by <a href="https://github.com/abregre" target="_blank">Vasilis Paparidis</a>
+        Made with <img src="@/assets/svg/heart-icon.svg" alt="heart" class="heart"> by <a href="https://github.com/abregre" target="_blank">Vasilis Paparidis</a>
     </div>
 </template>
 

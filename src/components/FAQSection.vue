@@ -3,11 +3,11 @@
         <div class="section-header">
             <h2 class="main-content-title">FAQ</h2>
             <img
-                v-scroll-to="'#workSection'"
-                :src="require('@/assets/svg/double-arrow-down.svg')"
+                src="@/assets/svg/double-arrow-down.svg"
                 alt="skip section"
                 class="skip-btn"
                 title="Skip to next section"
+                @click="scrollTo('#workSection')"
             >
         </div>
         <p class="faq-intro">
@@ -103,6 +103,11 @@
                     })
                 }
             })
+        },
+        methods: {
+            scrollTo(selector) {
+                document.querySelector(selector).scrollIntoView({ behavior: 'smooth' })
+            }
         }
     }
 </script>

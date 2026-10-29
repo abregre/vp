@@ -1,22 +1,23 @@
 <template>
     <div id="app">
-        <particles
+        <vue-particles
             id="tsparticles"
             class="particles"
             :options="particleOptions"
         />
         <sound />
-        <router-view />
+        <home />
         <move-top />
     </div>
 </template>
 
 <script>
-    import Sound from '@/components/Sound'
-    import MoveTop from '@/components/MoveTop'
+    import Sound from '@/components/Sound.vue'
+    import MoveTop from '@/components/MoveTop.vue'
+    import Home from '@/views/Home.vue'
     export default {
         components: {
-            Sound, MoveTop
+            Sound, MoveTop, Home
         },
         data() {
             return {
@@ -24,6 +25,22 @@
                     fullScreen: {
                         zIndex: 1
                     },
+                    responsive: [
+                        {
+                            maxWidth: 1000,
+                            options: {
+                                particles: {
+                                    number: {
+                                        density: {
+                                            enable: true,
+                                            height: 1000,
+                                            width: 800
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    ],
                     interactivity: {
                         events: {
                             onClick: {
@@ -42,7 +59,7 @@
                     },
                     particles: {
                         color: {
-                            value: 'fff'
+                            value: '#fff'
                         },
                         links: {
                             color: {
@@ -70,26 +87,18 @@
                         },
                         number: {
                             density: {
-                                enable: true
+                                enable: false
                             },
-                            limit: 150,
+                            limit: {
+                                value: 150
+                            },
                             value: 150
                         },
                         opacity: {
-                            value: 0.3,
-                            animation: {
-                                speed: 1,
-                                minimumValue: 0.1
-                            }
+                            value: 0.3
                         },
                         size: {
-                            random: true,
-                            minValue: 1,
-                            maxValue: 3,
-                            animation: {
-                                speed: 30,
-                                minimumValue: 0.1
-                            }
+                            value: { min: 1, max: 3 }
                         }
                     }
                 }
@@ -100,10 +109,10 @@
 
 <style>
 
-@import '~@/global.css';
+@import '@/global.css';
 
 #app {
-    background: url('~@/assets/hero-image2.jpg');
+    background: url('@/assets/hero-image2.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
