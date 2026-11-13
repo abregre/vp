@@ -16,10 +16,11 @@
                                     Have a product in mind or a project that needs a builder? Let's talk.
                                 </p>
                             </div>
-                            <div>
+                            <div class="btn-row">
                                 <button id="emailBtn" class="btn" type="button" @click="email">
                                     Email me
                                 </button>
+                                <a class="btn ghost" :href="cvHref" download>Download CV</a>
                             </div>
                         </div>
                     </div>
@@ -61,6 +62,7 @@
     import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
     const root = ref(null)
+    const cvHref = import.meta.env.BASE_URL + 'cv/Vasilis-Paparidis-CV.pdf'
     let mm = null
 
     const email = () => {
@@ -159,6 +161,23 @@
 .btn:hover {
     background: var(--base-color);
     box-shadow: var(--glow-red);
+}
+
+.btn-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+}
+
+.btn.ghost {
+    display: inline-block;
+    border-color: var(--violet);
+    box-shadow: inset 0 0 0 1px rgba(155, 107, 255, 0.15), 0 0 14px rgba(155, 107, 255, 0.2);
+}
+
+.btn.ghost:hover {
+    background: var(--violet);
+    box-shadow: var(--glow-violet);
 }
 
 .ct-in .label {
