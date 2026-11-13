@@ -6,6 +6,7 @@
         <faq-section />
         <tool-section />
         <books-section />
+        <workbench-section />
         <contact-section />
         <footer-bar />
     </div>
@@ -18,6 +19,7 @@
     import FaqSection from '@/components/FAQSection.vue'
     import ToolSection from '@/components/ToolSection.vue'
     import BooksSection from '@/components/BooksSection.vue'
+    import WorkbenchSection from '@/components/WorkbenchSection.vue'
     import ContactSection from '@/components/ContactSection.vue'
     import FooterBar from '@/components/FooterBar.vue'
 
@@ -29,6 +31,7 @@
             FaqSection,
             ToolSection,
             BooksSection,
+            WorkbenchSection,
             ContactSection,
             FooterBar
         }

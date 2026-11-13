@@ -2,7 +2,7 @@
     <section id="contact" ref="root" class="sec">
         <div class="wrap">
             <div class="sec-head" data-rv>
-                <span class="no">04</span><h2>Contact</h2><span class="ln" /><span class="sheet">Title block</span>
+                <span class="no">05</span><h2>Contact</h2><span class="ln" /><span class="sheet">Title block</span>
             </div>
             <div class="contact-wrap">
                 <div class="cw main" data-rv>

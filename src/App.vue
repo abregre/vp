@@ -5,6 +5,7 @@
         <div class="crop bl" />
         <div class="crop br" />
         <move-top />
+        <inspect-overlay />
         <div class="page">
             <div class="grid-fine" />
             <div class="grid-major" />
@@ -19,6 +20,7 @@
     import { gsap } from 'gsap'
     import { ScrollTrigger } from 'gsap/ScrollTrigger'
     import MoveTop from '@/components/MoveTop.vue'
+    import InspectOverlay from '@/components/InspectOverlay.vue'
     import Home from '@/views/Home.vue'
 
     gsap.registerPlugin(ScrollTrigger)
@@ -27,7 +29,7 @@
 
     export default {
         components: {
-            MoveTop, Home
+            MoveTop, InspectOverlay, Home
         },
         data() {
             return {
