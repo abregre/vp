@@ -1,10 +1,10 @@
 <template>
-    <div v-if="isScrolled" class="scroll-top" title="Scroll to top" @click="moveUp">
-        <img src="@/assets/svg/double-arrow-up.svg" alt="scroll to top">
-    </div>
+    <button class="to-top" :class="{ show: isScrolled }" type="button" aria-label="Back to top" @click="moveUp">
+        <svg viewBox="0 0 16 16"><path d="M8 14V2M3 7l5-5 5 5" /></svg>
+    </button>
 </template>
-<script>
 
+<script>
     export default {
         data() {
             return {
@@ -12,51 +12,74 @@
             }
         },
         mounted() {
-            window.addEventListener('scroll', this.checkPoint)
+            window.addEventListener('scroll', this.checkPoint, { passive: true })
+            window.addEventListener('resize', this.checkPoint)
+            this.checkPoint()
+        },
+        beforeUnmount() {
+            window.removeEventListener('scroll', this.checkPoint)
+            window.removeEventListener('resize', this.checkPoint)
         },
         methods: {
             checkPoint() {
-                if (window.scrollY > 100) {
-                    this.isScrolled = true
-                } else {
-                    this.isScrolled = false
-                }
+                const hero = document.getElementById('top')
+                this.isScrolled = window.scrollY > (hero ? hero.offsetHeight : 100)
             },
             moveUp() {
-                window.scrollTo(0, 0)
+                const calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+                window.scrollTo({ top: 0, behavior: calm ? 'instant' : 'smooth' })
             }
         }
     }
 </script>
 
 <style scoped>
+.to-top { display: none; }
 
-.scroll-top {
-    --border-radius: 20px;
+@media (max-width: 768px) {
+    .to-top {
+        display: grid;
+        place-items: center;
+        position: fixed;
+        right: 18px;
+        bottom: 22px;
+        z-index: 55;
+        width: 44px;
+        height: 44px;
+        padding: 0;
+        background: rgba(8, 8, 12, 0.88);
+        border: 1px solid var(--line-red);
+        box-shadow: var(--glow-red);
+        color: #fff;
+        cursor: pointer;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s, visibility 0.3s, background-color 0.25s;
+    }
 
-    position: fixed;
-    right: 0;
-    bottom: 8vh;
-    padding: 1rem 0.5rem 1rem 1rem;
-    background: var(--base-color);
-    border-top-left-radius: var(--border-radius);
-    border-bottom-left-radius: var(--border-radius);
-    opacity: 0.5;
-    transition: opacity 0.15s ease-in, max-width 0.4s ease-out 0.1s;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    max-width: 100%;
-    z-index: 1;
+    .to-top.show {
+        opacity: 1;
+        visibility: visible;
+    }
+    .to-top:hover, .to-top:focus-visible { background: var(--base-color); }
+
+    .to-top svg {
+        width: 16px;
+        height: 16px;
+        stroke: currentcolor;
+        fill: none;
+        stroke-width: 1.5;
+    }
+
+    .to-top::before {
+        content: '';
+        position: absolute;
+        left: -6px;
+        top: -6px;
+        width: 10px;
+        height: 10px;
+        border-top: 1px solid var(--violet);
+        border-left: 1px solid var(--violet);
+    }
 }
-
-.scroll-top img {
-    width: 2rem;
-    height: 2rem;
-}
-
-.scroll-top:hover {
-    opacity: 1;
-}
-
 </style>

@@ -1,45 +1,68 @@
 <template>
-    <section id="toolSection" class="tool-section">
-        <div class="section-header">
-            <h2 class="main-content-title">Tools</h2>
-        </div>
-        <div class="external-container">
-            <div class="tools-info">
-                Here are some tools and technologies that I use.<br>My frontend framework to go is Vue, but I also use other frameworks such as React.<br>I also prefer vanilla CSS for most applications, but I also use SASS for some projects.
+    <section id="tools" ref="root" class="sec">
+        <div class="wrap">
+            <div class="sec-head" data-rv>
+                <span class="no">03</span><h2>Tools</h2><span class="ln" /><span class="sheet">Index</span>
             </div>
-            <div class="tools-container">
-                <div
-                    v-for="tool in tools"
-                    :key="tool.id"
-                    class="tool"
-                >
-                    <img
-                        :src="logos['/src/assets/svg/tool-logos/' + tool.fileName]"
-                        :alt="tool.name"
-                        :title="tool.name"
-                        class="tool-icon"
-                    >
+            <div class="tools-wrap">
+                <div class="tile t-info" data-rv>
+                    <div class="label">
+                        stack
+                    </div>
+                    <div class="tools-info">
+                        Here are some tools and technologies that I use.<br>My frontend framework to go is Vue, but I also use other frameworks such as React.<br>I also prefer vanilla CSS for most applications, but I also use SASS for some projects.
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="external-container">
-            <div class="books-info">
-                Here are some books that I am reading through over and over again.<br>I want to suggest these books since they are a great source of deep knowledge and guides to write better code.
-            </div>
-            <div class="books-container">
-                <div
-                    v-for="book in books"
-                    :key="book.id"
-                    class="book"
-                >
-                    <img
-                        :src="covers['/src/assets/covers/' + book.fileName]"
-                        :alt="book.title"
-                        class="book-cover"
-                    >
-                    <div class="book-info">
-                        <div v-dompurify-html="book.title" class="book-title" />
-                        <div v-dompurify-html="book.author" class="book-author" />
+                <div id="mem" class="tile mem" :data-mode="mode" data-rv>
+                    <div class="mem-hud">
+                        <div class="mem-stats">
+                            <span>Moves<b>{{ pad(moves) }}</b></span><span>Pairs<b>{{ pairs }}</b>/8</span>
+                        </div>
+                        <div class="mem-actions">
+                            <button id="memRestart" class="btn sm ghost" type="button" @click="restart">
+                                Restart
+                            </button>
+                            <button id="memShowAll" class="btn sm show-all" type="button" @click="showAll">
+                                Show all
+                            </button>
+                        </div>
+                    </div>
+                    <div class="mem-stage">
+                        <div ref="board" class="mem-board">
+                            <button
+                                v-for="(card, k) in deck"
+                                :key="gen + '-' + k"
+                                type="button"
+                                class="mem-card"
+                                :class="{ flipped: card.flipped, matched: card.matched }"
+                                :data-tool="card.tool.name"
+                                :aria-label="'Memory card ' + pad(k + 1) + (card.flipped || card.matched ? ': ' + card.tool.name : '')"
+                                :disabled="card.matched"
+                                @click="flip(card)"
+                            >
+                                <div class="mem-in">
+                                    <div class="mem-back">
+                                        <span>//</span>
+                                    </div>
+                                    <div class="mem-face">
+                                        <span class="lg" :class="{ plate: card.tool.plate }"><img :src="card.tool.src" :alt="card.tool.name"></span><span class="nm">{{ card.tool.name }}</span>
+                                    </div>
+                                </div>
+                            </button>
+                        </div>
+                        <div class="mem-win">
+                            <div class="mem-win-t">
+                                STACK UNLOCKED
+                            </div>
+                            <div class="mem-win-s">
+                                8/8 pairs
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tools-container">
+                        <div v-for="tool in tools" :key="tool.name" class="tool">
+                            <span class="lg" :class="{ plate: tool.plate }"><img :src="tool.src" :alt="tool.name" :title="tool.name"></span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -47,384 +70,645 @@
     </section>
 </template>
 
-<script>
+<script setup>
+    import { ref, nextTick, onMounted, onBeforeUnmount } from 'vue'
     import { gsap } from 'gsap'
     import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
     const logos = import.meta.glob('@/assets/svg/tool-logos/*.svg', { eager: true, import: 'default' })
-    const covers = import.meta.glob('@/assets/covers/*.png', { eager: true, import: 'default' })
 
-    export default {
-        data() {
-            return {
-                logos,
-                covers,
-                tools: [
-                    {
-                        id: 1,
-                        name: 'JavaScript',
-                        fileName: 'js-logo.svg'
-                    },
-                    {
-                        id: 2,
-                        name: 'Vue',
-                        fileName: 'vue-logo.svg'
-                    },
-                    {
-                        id: 3,
-                        name: 'CSS',
-                        fileName: 'css-logo.svg'
-                    },
-                    {
-                        id: 4,
-                        name: 'HTML',
-                        fileName: 'html-logo.svg'
-                    },
-                    {
-                        id: 5,
-                        name: 'StyleLint',
-                        fileName: 'stylelint-logo.svg'
-                    },
-                    {
-                        id: 6,
-                        name: 'EsLint',
-                        fileName: 'eslint-logo.svg'
-                    },
-                    {
-                        id: 7,
-                        name: 'Jest',
-                        fileName: 'jest-logo.svg'
-                    },
-                    {
-                        id: 8,
-                        name: 'Git',
-                        fileName: 'git-logo.svg'
-                    },
-                    {
-                        id: 9,
-                        name: 'Yarn',
-                        fileName: 'yarn-logo.svg'
-                    },
-                    {
-                        id: 10,
-                        name: 'Npm',
-                        fileName: 'npm-logo.svg'
-                    },
-                    {
-                        id: 11,
-                        name: 'Babel',
-                        fileName: 'babel-logo.svg'
-                    },
-                    {
-                        id: 12,
-                        name: 'Nuxt',
-                        fileName: 'nuxt-logo.svg'
-                    },
-                    {
-                        id: 13,
-                        name: 'Ubuntu',
-                        fileName: 'ubuntu-logo.svg'
-                    },
-                    {
-                        id: 14,
-                        name: 'Sass',
-                        fileName: 'sass-logo.svg'
-                    },
-                    {
-                        id: 15,
-                        name: 'Stylus',
-                        fileName: 'stylus-logo.svg'
-                    },
-                    {
-                        id: 16,
-                        name: 'React',
-                        fileName: 'react-logo.svg'
-                    },
-                    {
-                        id: 17,
-                        name: 'JSON',
-                        fileName: 'json-logo.svg'
-                    },
-                    {
-                        id: 18,
-                        name: 'Figma',
-                        fileName: 'figma-logo.svg'
-                    },
-                    {
-                        id: 19,
-                        name: 'Adobe XD',
-                        fileName: 'xd-logo.svg'
-                    },
-                    {
-                        id: 20,
-                        name: 'Photoshop',
-                        fileName: 'photoshop-logo.svg'
-                    }
-                ],
-                books: [
-                    {
-                        id: 1,
-                        title: '<span class="strong-text">Clean Code</span>: A Handbook of Agile Software Craftsmanship',
-                        author: '<a href="http://cleancoder.com" class="strong-text">Robert C. Martin</a>',
-                        fileName: 'cleanCode-cover.png'
-                    },
-                    {
-                        id: 2,
-                        title: '<span class="strong-text">The Clean Coder</span>: A Code of Conduct for Professional Programmers',
-                        author: '<a href="http://cleancoder.com" class="strong-text">Robert C. Martin</a>',
-                        fileName: 'cleanCoder-cover.png'
-                    },
-                    {
-                        id: 3,
-                        title: '<span class="strong-text">Refactoring</span>: Improving the Design of Existing Code, 2nd Edition',
-                        author: '<a href="https://martinfowler.com" class="strong-text">Martin Fowler</a>',
-                        fileName: 'refactoring-cover.png'
-                    },
-                    {
-                        id: 4,
-                        title: '<span class="strong-text">Eloquent JavaScript</span>, 3rd Edition: A Modern Introduction to Programming',
-                        author: '<a href="https://marijnhaverbeke.nl" class="strong-text">Marijn Haverbeke</a>',
-                        fileName: 'eloquent-cover.png'
-                    },
-                    {
-                        id: 5,
-                        title: '<span class="strong-text">Head First Design Patterns</span>, 2nd Edition',
-                        author: '<a href="https://wickedlysmart.com" class="strong-text">Eric Freeman & Elisabeth Robson</a>',
-                        fileName: 'headFirst-cover.png'
-                    },
-                    {
-                        id: 6,
-                        title: '<span class="strong-text">CSS Secrets</span>',
-                        author: '<a href="https://lea.verou.me" class="strong-text">Lea Verou</a>',
-                        fileName: 'cssSecrets-cover.png'
-                    }
-                ]
-            }
-        },
-        mounted() {
-            gsap.registerPlugin(ScrollTrigger)
+    const toolDefs = [
+        ['JavaScript', 'js', false],
+        ['Vue', 'vue', true],
+        ['Nuxt', 'nuxt', true],
+        ['React', 'react', false],
+        ['CSS', 'css', false],
+        ['HTML', 'html', false],
+        ['Sass', 'sass', false],
+        ['Git', 'git', false],
+        ['Yarn', 'yarn', false],
+        ['Npm', 'npm', false],
+        ['Node', 'node', true],
+        ['Ubuntu', 'ubuntu', false],
+        ['Figma', 'figma', false],
+        ['EsLint', 'eslint', true],
+        ['StyleLint', 'stylelint', true],
+        ['Jest', 'jest', false],
+        ['JSON', 'json', true],
+        ['Vite', 'vite', true],
+        ['GSAP', 'gsap', true]
+    ]
+    const tools = toolDefs.map(([name, file, plate]) => ({
+        name,
+        plate,
+        src: logos['/src/assets/svg/tool-logos/' + file + '-logo.svg']
+    }))
 
-            ScrollTrigger.batch('.tool', {
-                once: true,
-                onEnter: batch => {
-                    gsap.from(batch, {
-                        autoAlpha: 0,
-                        duration: 0.2,
-                        stagger: {
-                            each: 0.2
-                        }
-                    })
-                }
-            })
+    const calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const root = ref(null)
+    const board = ref(null)
+    const mode = ref(calm ? 'list' : 'game')
+    const deck = ref([])
+    const moves = ref(0)
+    const pairs = ref(0)
+    const gen = ref(0)
 
-            ScrollTrigger.batch('.book', {
-                once: true,
-                onEnter: batch => {
-                    gsap.from(batch, {
-                        autoAlpha: 0,
-                        x: 150,
-                        duration: 1,
-                        stagger: {
-                            each: 0.3
-                        }
-                    })
-                }
-            })
+    let open = []
+    let busy = false
+    let timers = []
+    let fx = null
+    let mm = null
+    let alive = false
+
+    const pad = n => (n < 10 ? '0' + n : '' + n)
+    const later = (fn, ms) => timers.push(setTimeout(fn, ms))
+    const clearTimers = () => {
+        timers.forEach(clearTimeout)
+        timers = []
+    }
+    const shuffle = a => {
+        const r = a.slice()
+        for (let i = r.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [r[i], r[j]] = [r[j], r[i]]
+        }
+        return r
+    }
+    const cardEls = () => Array.from(board.value ? board.value.children : [])
+    const refresh = () => {
+        nextTick(() => {
+            if (alive) ScrollTrigger.refresh()
+        })
+    }
+    const setMode = m => {
+        mode.value = m
+        refresh()
+    }
+
+    function build() {
+        clearTimers()
+        open = []
+        busy = false
+        moves.value = 0
+        pairs.value = 0
+        gen.value++
+        const pick = shuffle(tools).slice(0, 8)
+        deck.value = shuffle(pick.concat(pick)).map(tool => ({ tool, flipped: false, matched: false }))
+        nextTick(() => {
+            if (fx) fx.deal(cardEls())
+        })
+    }
+
+    function flip(card) {
+        if (busy || card.flipped || card.matched) return
+        card.flipped = true
+        open.push(card)
+        if (open.length < 2) return
+        busy = true
+        moves.value++
+        const [a, b] = open
+        const els = [a, b].map(c => cardEls()[deck.value.indexOf(c)])
+        if (a.tool.name === b.tool.name) {
+            later(() => {
+                a.flipped = false
+                b.flipped = false
+                a.matched = true
+                b.matched = true
+                if (fx) fx.match(els)
+                pairs.value++
+                open = []
+                busy = false
+                if (pairs.value === 8) win()
+            }, calm ? 0 : 450)
+        } else {
+            later(() => fx && fx.miss(els), 450)
+            later(() => {
+                a.flipped = false
+                b.flipped = false
+                open = []
+                busy = false
+            }, calm ? 300 : 700)
         }
     }
+
+    function win() {
+        setMode('win')
+        if (fx) nextTick(() => fx && fx.win())
+        later(listAll, calm ? 600 : 1900)
+    }
+
+    function listAll() {
+        clearTimers()
+        setMode('won')
+        if (fx) nextTick(() => fx && fx.list())
+    }
+
+    function showAll() {
+        clearTimers()
+        setMode('list')
+        if (fx) nextTick(() => fx && fx.list())
+    }
+
+    function restart() {
+        setMode('game')
+        build()
+    }
+
+    build()
+
+    onMounted(() => {
+        alive = true
+        gsap.registerPlugin(ScrollTrigger)
+        const q = s => root.value.querySelector(s)
+        const qa = s => Array.from(root.value.querySelectorAll(s))
+        const once = (el, extra) => ({ trigger: el, start: 'top 88%', once: true, ...extra })
+        mm = gsap.matchMedia()
+        mm.add('(prefers-reduced-motion: no-preference)', () => {
+            qa('[data-rv]').forEach(el => {
+                const ln = el.querySelector('.ln')
+                gsap.fromTo(el, { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out', scrollTrigger: once(el) })
+                if (ln) gsap.fromTo(ln, { scaleX: 0 }, { scaleX: 1, duration: 1.1, ease: 'power3.inOut', scrollTrigger: once(el) })
+            })
+
+            gsap.set(qa('.mem-card'), { opacity: 0 })
+            fx = {
+                deal: cards => {
+                    gsap.fromTo(cards, { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.45, stagger: { amount: 0.6, from: 'random' }, ease: 'power2.out' })
+                },
+                match: cards => {
+                    gsap.fromTo(cards, { scale: 1 }, { scale: 1.07, duration: 0.18, yoyo: true, repeat: 1, ease: 'power2.out' })
+                },
+                miss: cards => {
+                    gsap.fromTo(cards, { x: -4 }, { x: 4, duration: 0.07, yoyo: true, repeat: 3, ease: 'none', onComplete: () => gsap.set(cards, { x: 0 }) })
+                },
+                win: () => {
+                    gsap.fromTo(q('.mem-win-t'), { opacity: 0, letterSpacing: '0.6em' }, { opacity: 1, letterSpacing: '0.1em', duration: 0.9, ease: 'expo.out' })
+                    gsap.fromTo(q('.mem-win-s'), { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.5, delay: 0.5 })
+                    gsap.fromTo(qa('.mem-win .cm'), { opacity: 0, scale: 2.4 }, { opacity: 1, scale: 1, duration: 0.6, stagger: 0.08 })
+                },
+                list: () => {
+                    gsap.fromTo(qa('.tool'), { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.5, stagger: { amount: 0.7, from: 'random' }, ease: 'power2.out' })
+                }
+            }
+            ScrollTrigger.create({ trigger: q('.mem-board'), start: 'top 92%', once: true, onEnter: () => fx && fx.deal(cardEls()) })
+            gsap.fromTo(q('.mem-hud'), { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.6, scrollTrigger: once(q('.mem-hud')) })
+            return () => {
+                fx = null
+            }
+        })
+    })
+
+    onBeforeUnmount(() => {
+        alive = false
+        clearTimers()
+        if (mm) mm.revert()
+        mm = null
+        fx = null
+    })
 </script>
 
 <style scoped>
-.tool-section {
-    color: var(--font-color);
+.sec, .sec *, .sec *::before, .sec *::after {
+    box-sizing: border-box;
+}
+
+.sec {
     position: relative;
-    width: 90%;
-    min-height: 100vh;
-    max-width: 1400px;
-    justify-content: center;
-    align-items: center;
-    margin: 3rem auto;
-    overflow: hidden;
+    z-index: 1;
+    padding: 5rem 0 0;
 }
 
-.section-header {
+.sec img {
+    display: block;
+    max-width: 100%;
+}
+
+.wrap {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 calc(var(--pad) + 14px);
+}
+
+.sec-head {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-}
-
-.main-content-title {
-    font-size: var(--mobile-font-title);
+    gap: 1rem;
+    margin-bottom: 2.6rem;
     font-family: var(--font-headers);
-    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 0.8rem;
+}
+
+.sec-head .no {
+    color: var(--base-color);
     text-shadow: var(--text-shadow-light);
 }
 
-.tools-info,
-.books-info {
-    font-size: var(--mobile-font-body);
-    font-family: var(--font-body);
-    text-shadow: var(--text-shadow-light);
-    margin: 2rem auto;
-    text-align: center;
-    max-width: 60ch;
+.sec-head h2 {
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #fff;
+    letter-spacing: 0.14em;
+}
+
+.sec-head .ln {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--violet), var(--line) 40%);
+    box-shadow: var(--glow-violet);
+    transform-origin: left;
+}
+
+.sec-head .sheet {
+    color: var(--muted);
+}
+
+.tools-info {
+    max-width: 62ch;
+    color: #c9c6d3;
+    margin: 0 0 2.2rem;
+    font-weight: 300;
+}
+
+.tools-wrap {
+    display: grid;
+    gap: 14px;
+    margin-bottom: 4rem;
+}
+
+.tile {
+    position: relative;
+    border-radius: 18px;
+    padding: 1.3rem;
+    background: linear-gradient(180deg, var(--surface-2), var(--surface));
+    border: 1px solid var(--line);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 10px 30px rgba(0, 0, 0, 0.35);
+    overflow: hidden;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.tile .label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-headers);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1rem;
+}
+
+.tile .label::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 2px;
+    background: var(--violet);
+    box-shadow: 0 0 8px var(--violet);
+}
+
+.t-info .tools-info {
+    margin: 0;
 }
 
 .tools-container {
+    display: none;
+    grid-template-columns: repeat(auto-fill, minmax(64px, 1fr));
+    gap: 0.6rem;
+}
+
+.mem[data-mode="won"] .tools-container, .mem[data-mode="list"] .tools-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 5vh;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 1rem;
-    background: var(--background-overlay);
-    box-shadow: var(--text-shadow-light);
-    border-radius: 10px;
 }
 
 .tool {
-    max-width: 60px;
-    cursor: pointer;
+    aspect-ratio: 1;
+    display: grid;
+    place-items: center;
+    position: relative;
+    border-radius: 12px;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    transition: border-color 0.25s, box-shadow 0.25s, translate 0.25s;
+}
+
+.lg {
+    width: 54%;
+    aspect-ratio: 1;
     display: grid;
     place-items: center;
 }
 
-.tool-icon {
+.lg img {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: contain;
+    transition: scale 0.25s;
 }
 
-.tool:hover .tool-icon {
-    animation: jello-vertical 1s both;
+.lg.plate {
+    background: #eeecf4;
+    border-radius: 7px;
+    padding: 14%;
 }
 
-@keyframes jello-vertical {
-    0% {
-        transform: scale3d(1, 1, 1);
-    }
-
-    30% {
-        transform: scale3d(0.75, 1.25, 1);
-    }
-
-    40% {
-        transform: scale3d(1.25, 0.75, 1);
-    }
-
-    50% {
-        transform: scale3d(0.85, 1.15, 1);
-    }
-
-    65% {
-        transform: scale3d(1.05, 0.95, 1);
-    }
-
-    75% {
-        transform: scale3d(0.95, 1.05, 1);
-    }
-
-    100% {
-        transform: scale3d(1, 1, 1);
-    }
+.tool:hover {
+    translate: 0 -3px;
+    border-color: var(--violet);
+    box-shadow: 0 0 22px rgba(139, 92, 246, 0.35), inset 0 0 14px rgba(255, 42, 77, 0.15);
 }
 
-.books-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1rem;
-    padding: 1rem;
+.tool:hover img {
+    scale: 1.15;
 }
 
-.book {
-    background: var(--background-overlay);
-    box-shadow: var(--text-shadow-light);
-    border-radius: 10px;
-    padding: 0.5rem 1rem;
-    display: flex;
-    justify-content: flex-start;
+.btn {
+    display: inline-flex;
     align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    font: 600 0.92rem var(--font-body);
+    text-transform: none;
+    letter-spacing: normal;
+    color: #fff;
+    padding: 0.7rem 1.3rem;
+    border-radius: 12px;
+    border: 1px solid transparent;
+    background: linear-gradient(135deg, var(--base-color), #c4143a);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    transition: translate 0.25s, box-shadow 0.25s, filter 0.25s, border-color 0.25s;
 }
 
-.book-cover {
-    width: auto;
-    max-height: 150px;
-    height: auto;
+.btn:hover {
+    translate: 0 -2px;
+    box-shadow: 0 8px 28px rgba(255, 42, 77, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    filter: brightness(1.1);
 }
 
-.book-info {
-    margin: 0 1rem;
-    color: var(--base-color);
-    font-weight: lighter;
+.btn.ghost {
+    background: rgba(255, 255, 255, 0.03);
+    border-color: rgba(255, 255, 255, 0.16);
+    box-shadow: none;
+}
+
+.btn.ghost:hover {
+    border-color: var(--violet);
+    box-shadow: 0 0 24px rgba(139, 92, 246, 0.35);
+    filter: none;
+}
+
+.btn.sm {
+    padding: 0.45rem 0.9rem;
+    font-size: 0.85rem;
+}
+
+.mem {
+    padding: 1.1rem;
+}
+
+.mem-hud {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.7rem;
+    margin: 0 auto 1rem;
+    max-width: 520px;
 }
 
-.book-author {
-    margin-top: 1rem;
+.mem-stats {
+    display: flex;
+    gap: 1.2rem;
+    font-family: var(--font-headers);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
 }
 
-@media screen and (min-width: 768px) {
-    .main-content-title {
-        font-size: var(--tablet-font-title);
+.mem-stats b {
+    color: #fff;
+    font-weight: 500;
+    margin-left: 0.3rem;
+}
+
+.mem-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.mem-stage {
+    position: relative;
+    max-width: 520px;
+    margin: 0 auto;
+}
+
+.mem[data-mode="list"] .mem-stage, .mem[data-mode="won"] .mem-stage {
+    display: none;
+}
+
+.mem-board {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+}
+
+.mem-card {
+    position: relative;
+    perspective: 700px;
+    border: 0;
+    padding: 0;
+    background: none;
+    cursor: pointer;
+    aspect-ratio: 1 / 1.06;
+    display: block;
+    width: 100%;
+    font: inherit;
+    color: inherit;
+}
+
+.mem-card:focus-visible {
+    outline: 2px solid var(--violet);
+    outline-offset: 3px;
+    border-radius: 14px;
+}
+
+.mem-in {
+    position: absolute;
+    inset: 0;
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+}
+
+.mem-card.flipped .mem-in, .mem-card.matched .mem-in {
+    transform: rotateY(180deg);
+}
+
+.mem-back, .mem-face {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    display: grid;
+    place-items: center;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.mem-back {
+    background: linear-gradient(160deg, #1a1a26, var(--surface));
+    transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+.mem-back span {
+    font-family: var(--font-headers);
+    color: var(--violet);
+    font-size: 1.1rem;
+}
+
+.mem-card:hover .mem-back {
+    border-color: var(--violet);
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.35), inset 0 0 16px rgba(255, 42, 77, 0.12);
+}
+
+.mem-face {
+    transform: rotateY(180deg);
+    background: var(--surface);
+    align-content: center;
+    gap: 0.4rem;
+    text-align: center;
+}
+
+.mem-face .lg {
+    width: 44%;
+    margin: 0 auto;
+}
+
+.mem-face span.nm {
+    font-family: var(--font-headers);
+    font-size: 0.6rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #c9c6d3;
+}
+
+.mem-card.matched .mem-face {
+    border-color: var(--violet);
+    box-shadow: 0 0 22px rgba(139, 92, 246, 0.35), inset 0 0 18px rgba(255, 42, 77, 0.14);
+}
+
+.mem-card.matched {
+    cursor: default;
+}
+
+.mem-win {
+    position: absolute;
+    inset: 0;
+    display: none;
+    place-content: center;
+    text-align: center;
+    background: rgba(8, 8, 12, 0.86);
+    border-radius: 14px;
+    z-index: 5;
+}
+
+.mem[data-mode="win"] .mem-win {
+    display: grid;
+}
+
+.mem-win-t {
+    font-size: clamp(1.6rem, 7vw, 2.6rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    background: linear-gradient(100deg, #ff4d6d, var(--violet));
+    background-clip: text;
+    color: transparent;
+}
+
+.mem-win-s {
+    font-family: var(--font-headers);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 0.5rem;
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .tool, .tile, .mem-card {
+        isolation: isolate;
     }
 
-    .tools-info,
-    .books-info {
-        font-size: var(--tablet-font-body);
-        margin: 3rem auto;
+    .tool::before, .tile::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        z-index: -1;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.3s;
+        background: radial-gradient(320px circle at var(--mx, 50%) var(--my, 50%), rgba(155, 107, 255, 0.15), rgba(255, 45, 85, 0.06) 45%, transparent 70%);
+    }
+
+    .tool::after, .tile::after, .mem-card::after {
+        content: '';
+        position: absolute;
+        inset: -1px;
+        border-radius: inherit;
+        padding: 1px;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.3s;
+        background: radial-gradient(200px circle at var(--mx, 50%) var(--my, 50%), var(--base-color), var(--violet) 55%, transparent 80%);
+        mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+    }
+
+    .mem-card::after {
+        inset: 0;
+        border-radius: 14px;
+        z-index: 3;
+    }
+
+    .tool:hover::before, .tile:hover::before, .tool:hover::after, .tile:hover::after, .mem-card:hover::after {
+        opacity: 1;
+    }
+
+    .mem-card:hover .mem-back {
+        background-image: radial-gradient(130px circle at var(--mx, 50%) var(--my, 50%), rgba(155, 107, 255, 0.28), rgba(255, 45, 85, 0.1) 50%, transparent 75%), linear-gradient(160deg, #1a1a26, var(--surface));
+    }
+
+    .mem-card:hover .mem-face {
+        background-image: radial-gradient(130px circle at var(--mx, 50%) var(--my, 50%), rgba(155, 107, 255, 0.2), rgba(255, 45, 85, 0.08) 50%, transparent 75%);
+    }
+}
+
+@media (min-width: 768px) {
+    .mem-face span.nm {
+        font-size: 0.7rem;
+    }
+
+    .mem-board {
+        gap: 12px;
     }
 
     .tools-container {
-        grid-template-columns: repeat(5, 1fr);
-        max-width: 650px;
-    }
-
-    .tool {
-        max-width: 90px;
-    }
-
-    .books-container {
-        padding: 1.5rem;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(72px, 1fr));
     }
 }
 
-@media screen and (min-width: 1024px) {
-    .external-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin: 3rem auto;
-    }
-
-    .tools-container {
-        max-width: 750px;
-        width: 60%;
-    }
-
-    .tools-info,
-    .books-info {
-        text-align: left;
-        font-size: calc(var(--desktop-font-body) * 1.3);
-        max-width: 500px;
-        margin: 3rem 2rem;
-    }
-
-    .tool {
-        max-width: 100px;
-    }
-
-    .books-container {
-        padding: 2rem;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-        max-width: 1000px;
-        width: 60%;
-        margin: 0 auto;
+@media (min-width: 1024px) {
+    .tools-wrap {
+        grid-template-columns: 1fr 2fr;
+        align-items: start;
     }
 }
 
+@media (prefers-reduced-motion: reduce) {
+    .mem-in {
+        transition: none;
+    }
+}
 </style>

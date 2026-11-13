@@ -1,39 +1,67 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Share+Tech+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
 :root {
-    --font-headers: 'Share Tech Mono', monospace;
-    --font-body: 'Roboto', sans-serif;
-    --font-color: #fff;
-    --base-color: hsl(266, 31%, 37%);
-    --base-color-hover: hsl(266, 31%, 55%);
-    --background-overlay: hsla(0, 0%, 100%, 0.9);
-    --mobile-font-title: 3.4rem;
-    --mobile-font-body: 1.1rem;
-    --tablet-font-title: 6rem;
-    --tablet-font-body: 1.3rem;
-    --desktop-font-title: 10rem;
-    --desktop-font-body: 1.4rem;
-    --text-shadow-light-color: rgba(218, 218, 218, 0.2);
-    --text-shadow-light:
-        1px -5px 8px var(--text-shadow-light-color),
-        2px -4px 8px var(--text-shadow-light-color),
-        3px -3px 8px var(--text-shadow-light-color),
-        4px -2px 8px var(--text-shadow-light-color),
-        5px -1px 8px var(--text-shadow-light-color),
-        -1px 5px 8px var(--text-shadow-light-color),
-        -2px 4px 8px var(--text-shadow-light-color),
-        -3px 3px 8px var(--text-shadow-light-color),
-        -4px 2px 8px var(--text-shadow-light-color),
-        -5px 1px 8px var(--text-shadow-light-color);
-    --box-shadow-light: drop-shadow(3px 3px 8px rgba(255, 255, 255, 0.7));
+    --font-headers: 'JetBrains Mono', 'Share Tech Mono', ui-monospace, monospace;
+    --font-body: 'Hanken Grotesk', 'Roboto', system-ui, sans-serif;
+    --font-color: #e9e9f0;
+    --base-color: #ff2d55;
+    --base-color-hover: #ff6b86;
+    --background-overlay: hsla(240, 20%, 5%, 0.82);
+    --mobile-font-title: 2.6rem;
+    --mobile-font-body: 1.05rem;
+    --tablet-font-title: 4rem;
+    --tablet-font-body: 1.15rem;
+    --desktop-font-title: 5.5rem;
+    --desktop-font-body: 1.2rem;
+    --text-shadow-light-color: rgba(255, 45, 85, 0.4);
+    --text-shadow-light: 0 0 8px var(--text-shadow-light-color);
+    --box-shadow-light: drop-shadow(0 0 6px rgba(255, 45, 85, 0.6));
+    --bg: #08080c;
+    --surface: #0d0d13;
+    --surface-2: #12121a;
+    --violet: #9b6bff;
+    --violet-soft: rgba(155, 107, 255, 0.5);
+    --line: rgba(255, 255, 255, 0.14);
+    --line-dim: rgba(255, 255, 255, 0.06);
+    --line-red: rgba(255, 45, 85, 0.75);
+    --muted: #8c8c9c;
+    --glow-red: 0 0 6px rgba(255, 45, 85, 0.7), 0 0 18px rgba(255, 45, 85, 0.25);
+    --glow-violet: 0 0 6px rgba(155, 107, 255, 0.7), 0 0 18px rgba(155, 107, 255, 0.25);
+    --nav-h: 56px;
+    --pad: 1.25rem;
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--font-color);
+    font-family: var(--font-body);
+    font-size: var(--mobile-font-body);
+    line-height: 1.65;
 }
 
 ::selection {
     background: var(--base-color);
-    color: var(--font-color);
+    color: #fff;
 }
 
 .strong-text {
     font-size: calc(var(--mobile-font-body) * 1.1);
     font-weight: 700;
+}
+
+@media (min-width: 768px) {
+    body {
+        font-size: var(--tablet-font-body);
+    }
+}
+
+@media (min-width: 1024px) {
+    :root {
+        --pad: 2rem;
+    }
+
+    body {
+        font-size: var(--desktop-font-body);
+    }
 }

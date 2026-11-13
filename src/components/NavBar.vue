@@ -1,128 +1,126 @@
 <template>
-    <div class="navbar-container">
-        <div class="custom-btn" @click="scrollTo('#faqSection')">
-            <span class="noselect">FAQ</span>
+    <nav class="nav">
+        <a class="nav-logo" href="#top">VP<i>/</i><span>Paparidis</span></a>
+        <div class="nav-links">
+            <a href="#works"><b>01</b>Works</a>
+            <a href="#faq"><b>02</b>FAQ</a>
+            <a href="#tools"><b>03</b>Tools</a>
+            <a href="#contact"><b>04</b>Contact</a>
         </div>
-        <div class="custom-btn" @click="scrollTo('#workSection')">
-            <span class="noselect">Works</span>
-        </div>
-        <div class="custom-btn" @click="scrollTo('#toolSection')">
-            <span class="noselect">Tools</span>
-        </div>
-        <div class="custom-btn" @click="scrollTo('#infoSection')">
-            <span class="noselect">Info</span>
-        </div>
-    </div>
+        <div class="nav-rev">Rev. 2026</div>
+        <div class="nav-prog" />
+    </nav>
 </template>
 
 <script>
     import { markRaw } from 'vue'
     import { gsap } from 'gsap'
-    import { store } from '@/store'
+
     export default {
         data() {
             return {
-                tml: null
-            }
-        },
-        computed: {
-            hasBeenClicked() {
-                return store.clickedOnce
-            }
-        },
-        watch: {
-            hasBeenClicked(newVal) {
-                if (newVal) {
-                    this.tml.play()
-                }
+                mm: null
             }
         },
         mounted() {
-            this.tml = markRaw(gsap.timeline({ paused: true, delay: 1 }))
-            gsap.utils.toArray('.custom-btn').forEach((btn, i) => {
-                this.tml.from(btn, {
-                    duration: 1,
-                    autoAlpha: 0,
-                    ease: 'none'
-                }, i * 0.1)
+            this.mm = markRaw(gsap.matchMedia())
+            this.mm.add('(prefers-reduced-motion: no-preference)', () => {
+                gsap.fromTo(this.$el.querySelector('.nav-prog'), { scaleX: 0 }, {
+                    scaleX: 1,
+                    ease: 'none',
+                    scrollTrigger: { trigger: document.querySelector('.page'), start: 'top top', end: 'bottom bottom', scrub: true }
+                })
             })
         },
-        methods: {
-            scrollTo(selector) {
-                document.querySelector(selector).scrollIntoView({ behavior: 'smooth' })
-            }
+        beforeUnmount() {
+            this.mm.revert()
         }
     }
 </script>
 
 <style scoped>
-.navbar-container {
+.nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    height: var(--nav-h);
     display: flex;
-    flex-wrap: wrap;
-    flex-grow: 1;
-    justify-content: space-around;
     align-items: center;
-    width: 100%;
+    justify-content: space-between;
+    padding: 0 calc(var(--pad) + 14px);
+    background: rgba(8, 8, 12, 0.82);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
     font-family: var(--font-headers);
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.nav-logo {
+    text-decoration: none;
+    font-weight: 500;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.nav-logo i {
+    font-style: normal;
+    color: var(--base-color);
     text-shadow: var(--text-shadow-light);
 }
 
-.custom-btn {
-    cursor: pointer;
-    font-size: 1.5rem;
-    font-weight: bold;
-    width: 100%;
-    max-width: 80px;
-    min-height: 40px;
-    display: grid;
-    place-items: center;
-    position: relative;
-    user-select: none;
-    text-align: center;
+.nav-links {
+    display: flex;
+    gap: 0.3rem;
 }
 
-.custom-btn::before {
-    transition: 300ms;
-    height: 2px;
-    content: "";
+.nav-links a {
+    text-decoration: none;
+    color: var(--muted);
+    display: flex;
+    gap: 0.35rem;
+    padding: 0.4rem 0.6rem;
+}
+
+.nav-links a b {
+    font-weight: 400;
+    color: var(--violet);
+}
+
+.nav-links a:hover { color: #fff; }
+
+.nav-rev {
+    display: none;
+    color: var(--muted);
+}
+
+.nav-prog {
     position: absolute;
-    background-color: hsla(0, 0%, 100%, 0.7);
-    width: 0;
-    bottom: 0;
-}
-
-.custom-btn:hover::before {
+    left: 0;
+    bottom: -1px;
+    height: 1px;
     width: 100%;
-    animation: rotate 0.5s ease-in-out;
+    background: var(--base-color);
+    box-shadow: var(--glow-red);
+    transform: scaleX(0);
+    transform-origin: left;
 }
 
-@keyframes rotate {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(180deg);
-    }
+@media (min-width: 768px) {
+    .nav-links { gap: 0.8rem; }
 }
 
-@media screen and (min-width: 768px) {
-    .custom-btn {
-        font-size: 1.75rem;
-    }
+@media (min-width: 1024px) {
+    .nav-rev { display: block; }
 }
 
-@media screen and (min-width: 1024px) {
-    .custom-btn {
-        max-width: 200px;
-        min-height: 50px;
-        font-size: 2rem;
-    }
-
-    .custom-btn::before {
-        height: 3px;
-        bottom: -0.5rem;
-    }
+@media (max-width: 768px) {
+    .nav-links { gap: 0.1rem; }
+    .nav-links a { padding: 0.4rem 0.45rem; }
+    .nav-links a b { display: none; }
+    .nav-logo span { display: none; }
 }
-
 </style>

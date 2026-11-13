@@ -1,214 +1,337 @@
 <template>
-    <section class="hero-section">
-        <div class="logo">
-            <img src="@/assets/logo.png" alt="logo">
-        </div>
-        <div class="info-container">
-            <h1 class="route-title">
-                &lt;FRONT-END <br>ENGINEER &lt;&#47;&gt;
-            </h1>
-            <p class="availability">Who loves <span class="principles" />
-                <span class="small-cursor">|</span>
-            </p>
-        </div>
-        <nav-bar />
-        <div class="scroll-downs">
-            <div class="mousey">
-                <div class="scroller" />
+    <section id="top" class="hero">
+        <div class="wrap">
+            <div class="hero-label"><b>Sheet 00</b><span>Vasilis Paparidis</span><span>Thessaloniki, Greece</span></div>
+            <div class="draw">
+                <div class="dim-h"><span class="tk a" /><span class="ln" /><span class="tk b" /><span class="dim-lab">{{ width }} px</span></div>
+                <div class="dim-v"><span class="tk a" /><span class="ln" /><span class="tk b" /></div>
+                <h1 class="sr">Frontend Engineer turned product builder</h1>
+                <svg ref="svg" class="h1-svg" viewBox="0 0 1000 380" aria-hidden="true" role="presentation">
+                    <text x="0" y="110" font-size="104">Frontend Engineer</text>
+                    <text x="0" y="235" font-size="104">turned product</text>
+                    <text class="v" x="0" y="360" font-size="104">builder</text>
+                </svg>
+                <div class="callout c1"><span class="dot" /><span class="ld" /><span class="tx"><b>A</b>CSS first</span></div>
+                <div class="callout c2"><span class="dot" /><span class="ld" /><span class="tx"><b>B</b>Since 2020</span></div>
+            </div>
+            <p class="hero-sub">Remote, mostly part-time work or one-off freelance projects. If you have a product you want built, I'd like to hear about it.</p>
+            <div class="hero-cta">
+                <a class="btn" href="#works">View works</a>
+                <a class="btn ghost" href="#contact">Contact</a>
+            </div>
+            <div class="title-block">
+                <div><span>Name</span><em>V. Paparidis</em></div>
+                <div><span>Rev.</span><em>2026</em></div>
+                <div><span>Role</span><em>Frontend Engineer</em></div>
+                <div><span>Base</span><em>Thessaloniki, GR</em></div>
             </div>
         </div>
     </section>
 </template>
 
 <script>
-    import NavBar from '@/components/NavBar.vue'
-
-    import { store } from '@/store'
     import { markRaw } from 'vue'
-    import { gsap, TextPlugin, SteppedEase } from 'gsap/all'
+    import { gsap } from 'gsap'
+
     export default {
-        components: {
-            NavBar
-        },
         data() {
             return {
-                tml: null
-            }
-        },
-        computed: {
-            hasBeenClicked() {
-                return store.clickedOnce
-            }
-        },
-        watch: {
-            hasBeenClicked(newVal) {
-                if (newVal) {
-                    this.tml.play()
-                }
+                mm: null,
+                width: 0
             }
         },
         mounted() {
-            gsap.registerPlugin(TextPlugin)
-
-            this.tml = markRaw(gsap.timeline({ paused: true }))
-            this.tml.from('.route-title', { autoAlpha: 0, y: 100, duration: 0.5, ease: 'none' })
-            this.tml.from('.logo', { autoAlpha: 0, duration: 0.5, ease: 'none' }, '>')
-            this.tml.from('.availability', { autoAlpha: 0, duration: 0.5, ease: 'none' }, '>')
-            this.tml.from('.small-cursor', { autoAlpha: 0, x: -10, yoyo: true, repeat: -1, ease: SteppedEase.config(20) }, '<')
-            this.tml.to('.principles', { text: { value: 'Web Development, Clean Code and CSS.' }, duration: 3, ease: 'none' }, '>')
-            this.tml.from('.scroll-downs', { autoAlpha: 0, y: 100, duration: 1, ease: 'none' }, '>')
+            this.measure()
+            window.addEventListener('resize', this.measure)
+            window.addEventListener('load', this.measure)
+            this.mm = markRaw(gsap.matchMedia(this.$el))
+            this.mm.add('(prefers-reduced-motion: no-preference)', () => {
+                const texts = gsap.utils.toArray('.h1-svg text')
+                gsap.set(texts, { strokeDasharray: 2600 })
+                const tl = gsap.timeline({ defaults: { ease: 'power2.out' } })
+                tl.fromTo('.hero-label > *', { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.08 })
+                    .fromTo('.dim-h .ln', { scaleX: 0 }, { scaleX: 1, duration: 0.9, ease: 'power3.inOut' }, 0.1)
+                    .fromTo('.dim-v .ln', { scaleY: 0 }, { scaleY: 1, duration: 0.9, ease: 'power3.inOut' }, 0.1)
+                    .fromTo('.dim-h .tk, .dim-v .tk, .dim-lab', { opacity: 0 }, { opacity: 1, duration: 0.4, stagger: 0.05 }, 0.5)
+                    .fromTo(texts, { strokeDashoffset: 2600, fillOpacity: 0 }, { strokeDashoffset: 0, duration: 1.9, stagger: 0.25, ease: 'power2.inOut' }, 0.4)
+                    .to(texts, { fillOpacity: 1, duration: 0.8, stagger: 0.1, ease: 'power1.out' }, 2.1)
+                    .to(texts, { strokeOpacity: 0.35, duration: 0.8 }, 2.5)
+                    .fromTo('.hero .callout .ld', { scaleX: 0 }, { scaleX: 1, duration: 0.7, stagger: 0.2 }, 2.2)
+                    .fromTo('.hero .callout', { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: 0.9, stagger: 0.2, ease: 'power3.out' }, 2.2)
+                    .fromTo('.hero-sub, .hero-cta, .title-block', { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.7, stagger: 0.12 }, 2.3)
+            })
+        },
+        beforeUnmount() {
+            window.removeEventListener('resize', this.measure)
+            window.removeEventListener('load', this.measure)
+            this.mm.revert()
         },
         methods: {
-
+            measure() {
+                this.width = Math.round(this.$refs.svg.getBoundingClientRect().width)
+            }
         }
     }
 </script>
 
 <style scoped>
-.hero-section {
-    color: var(--font-color);
-    position: relative;
-    min-height: 100vh;
-    width: 90%;
+.hero {
+    min-height: calc(100vh - var(--nav-h));
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin: 0 auto;
-    padding: 2rem 0;
+    align-items: center;
+    padding: 3.5rem 0 4rem;
 }
 
-.logo {
-    max-width: 90px;
-    margin-top: 5vh;
-}
-
-.logo img {
+.hero .wrap {
     width: 100%;
+    position: relative;
 }
 
-.info-container {
-    flex-grow: 1;
+.hero-label {
+    font-family: var(--font-headers);
+    font-size: 0.74rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
 }
 
-h1 {
-    font-size: var(--mobile-font-title);
-    line-height: var(--mobile-font-title);
-    margin-bottom: 1rem;
-    user-select: none;
+.hero-label b {
+    color: var(--base-color);
+    font-weight: 400;
     text-shadow: var(--text-shadow-light);
 }
 
-p {
+.draw {
+    position: relative;
+    padding: 2.6rem 0 2.6rem 2rem;
+}
+
+.dim-h {
+    position: absolute;
+    left: 2rem;
+    right: 0;
+    top: 0;
+    height: 14px;
+    display: flex;
+    align-items: center;
+}
+
+.dim-h .ln {
+    flex: 1;
+    height: 1px;
+    background: var(--violet);
+    box-shadow: var(--glow-violet);
+    transform-origin: left;
+}
+
+.dim-h .tk, .dim-v .tk {
+    position: absolute;
+    background: var(--violet);
+}
+
+.dim-h .tk {
+    top: 0;
+    width: 1px;
+    height: 14px;
+}
+
+.dim-h .tk.a { left: 0; }
+
+.dim-h .tk.b { right: 0; }
+
+.dim-lab {
+    position: absolute;
+    top: -9px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--bg);
+    padding: 0 0.6rem;
+    font-family: var(--font-headers);
+    font-size: 0.68rem;
+    color: var(--violet);
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+}
+
+.dim-v {
+    position: absolute;
+    left: 0;
+    top: 2.6rem;
+    bottom: 2.6rem;
+    width: 14px;
+}
+
+.dim-v .ln {
+    position: absolute;
+    left: 6px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: var(--violet);
+    box-shadow: var(--glow-violet);
+    transform-origin: top;
+}
+
+.dim-v .tk {
+    left: 0;
+    width: 14px;
+    height: 1px;
+}
+
+.dim-v .tk.a { top: 0; }
+
+.dim-v .tk.b { bottom: 0; }
+
+.h1-svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+    filter: drop-shadow(0 0 5px rgba(255, 45, 85, 0.35));
+}
+
+.h1-svg text {
+    font-family: var(--font-body);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    fill: #f2f2f8;
+    stroke: var(--base-color);
+    stroke-width: 1.4;
+    paint-order: stroke;
+}
+
+.h1-svg text.v { stroke: var(--violet); }
+
+.sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+.callout {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-headers);
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--base-color-hover);
+    white-space: nowrap;
+}
+
+.callout .ld {
+    height: 1px;
+    background: var(--base-color);
+    box-shadow: var(--glow-red);
+    transform-origin: left;
+}
+
+.callout .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    border: 1px solid var(--base-color);
+    box-shadow: var(--glow-red);
+    flex: none;
+}
+
+.callout .tx {
+    border: 1px solid var(--line-red);
+    padding: 0.18rem 0.5rem;
+    background: rgba(8, 8, 12, 0.8);
+}
+
+.callout .tx b {
+    color: var(--violet);
+    font-weight: 400;
+    margin-right: 0.35rem;
+}
+
+.hero .callout.c1 {
+    right: 0;
+    top: 4%;
+    flex-direction: row-reverse;
+}
+
+.hero .callout.c2 {
+    right: 0;
+    bottom: 6%;
+    flex-direction: row-reverse;
+}
+
+.hero .callout .ld { width: 48px; }
+
+.hero-sub {
+    max-width: 52ch;
     font-size: var(--mobile-font-body);
-    padding-left: 0.5rem;
-    user-select: none;
-    text-shadow: var(--text-shadow-light);
+    margin: 2.4rem 0 2.2rem 2rem;
+    font-weight: 300;
+    line-height: 1.6;
+    color: #cfcfdb;
 }
 
-.cursor {
-    font-size: var(--mobile-font-title);
-    line-height: var(--mobile-font-title);
-    margin: 0;
+.hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-left: 2rem;
 }
 
-.small-cursor {
-    font-size: var(--mobile-font-body);
-    line-height: var(--mobile-font-body);
-    margin: 0;
+.title-block {
+    margin: 3.6rem 0 0 2rem;
+    max-width: 420px;
+    border: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    font-family: var(--font-headers);
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background: rgba(13, 13, 19, 0.7);
 }
 
-@media screen and (min-width: 768px) {
-    .logo {
-        max-width: 100px;
-    }
-
-    .cursor,
-    h1 {
-        font-size: var(--tablet-font-title);
-        line-height: var(--tablet-font-title);
-    }
-
-    .small-cursor,
-    p {
-        font-size: var(--tablet-font-body);
-        line-height: var(--tablet-font-body);
-    }
+.title-block div {
+    padding: 0.5rem 0.7rem;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
 }
 
-@media screen and (min-width: 1024px) {
-    .logo {
-        max-width: 120px;
-    }
+.title-block div:nth-child(2n) { border-right: 0; }
 
-    .cursor,
-    h1 {
-        font-size: var(--desktop-font-title);
-        line-height: var(--desktop-font-title);
-    }
+.title-block div:nth-last-child(-n+2) { border-bottom: 0; }
 
-    .small-cursor {
-        font-size: var(--desktop-font-body);
-        line-height: var(--desktop-font-body);
-    }
+.title-block span {
+    display: block;
+    color: var(--muted);
+    font-size: 0.6rem;
+}
 
-    p {
-        font-size: 1.5rem;
-        padding-left: 1rem;
-    }
+.title-block em {
+    font-style: normal;
+    color: #fff;
+}
 
-    .scroll-downs {
-        position: absolute;
-        bottom: 5vh;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 24px;
-        height: 45px;
-        user-select: none;
-    }
-
-    .hide {
-        display: none;
-    }
-
-    .mousey {
-        width: 3px;
-        padding: 7px 12px;
-        height: 35px;
-        border: 2px solid #fff;
-        border-radius: 25px;
-        opacity: 0.75;
-        box-sizing: content-box;
-    }
-
-    .scroller {
-        width: 3px;
-        height: 10px;
-        border-radius: 25%;
-        background-color: #fff;
-        animation-name: scroll;
-        animation-duration: 2s;
-        animation-timing-function: cubic-bezier(0.15, 0.41, 0.69, 0.94);
-        animation-iteration-count: infinite;
-    }
-
-    @keyframes scroll {
-        0% {
-            opacity: 0;
-        }
-
-        10% {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        100% {
-            transform: translateY(8px);
-            opacity: 0;
-        }
+@media (min-width: 1024px) {
+    .hero-sub {
+        font-size: 1.3rem;
+        line-height: 1.55;
     }
 }
 
+@media (max-width: 768px) {
+    .hero .callout.c1, .hero .callout.c2 { display: none; }
+    .draw { padding-left: 1.6rem; }
+    .dim-h { left: 1.6rem; }
+    .hero-sub, .hero-cta, .title-block { margin-left: 0; }
+    .title-block { margin-top: 2rem; }
+}
 </style>

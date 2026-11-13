@@ -25,6 +25,11 @@ jobs:
           cache: yarn
       - run: yarn install --frozen-lockfile
       - run: yarn build
+      - uses: actions/checkout@v4
+        with:
+          ref: v2021
+          path: legacy
+      - run: cd legacy && yarn install --frozen-lockfile && yarn vite build --base /vp/2021/ --outDir ../dist/2021 --emptyOutDir
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
