@@ -24,10 +24,10 @@
                     <div class="wb-ctl">
                         <div class="ctl">
                             <div class="ctl-h">
-                                <span>Colour</span>
+                                <span id="wb-glow-colour-h">Colour</span>
                                 <output>{{ glow.color }}</output>
                             </div>
-                            <div class="ctl-row">
+                            <div class="ctl-row" role="group" aria-labelledby="wb-glow-colour-h">
                                 <input v-model="glow.color" type="color" aria-label="Glow colour">
                                 <button
                                     v-for="c in glowColors"
@@ -43,9 +43,9 @@
                         </div>
                         <div class="ctl">
                             <div class="ctl-h">
-                                <span>Target</span>
+                                <span id="wb-glow-target-h">Target</span>
                             </div>
-                            <div class="ctl-row">
+                            <div class="ctl-row" role="group" aria-labelledby="wb-glow-target-h">
                                 <button
                                     v-for="t in glowTargets"
                                     :key="t"
@@ -59,15 +59,15 @@
                             </div>
                         </div>
                         <div class="ctl">
-                            <label class="ctl-h" for="wb-glow-blur"><span>Blur</span><output>{{ glow.blur }} px</output></label>
+                            <div class="ctl-h"><label for="wb-glow-blur">Blur</label><output>{{ glow.blur }} px</output></div>
                             <input id="wb-glow-blur" v-model.number="glow.blur" type="range" min="0" max="40" step="1">
                         </div>
                         <div class="ctl">
-                            <label class="ctl-h" for="wb-glow-spread"><span>Spread</span><output>{{ glowUse.box ? glow.spread + ' px' : 'box only' }}</output></label>
+                            <div class="ctl-h"><label for="wb-glow-spread">Spread</label><output>{{ glowUse.box ? glow.spread + ' px' : 'box only' }}</output></div>
                             <input id="wb-glow-spread" v-model.number="glow.spread" type="range" min="0" max="16" step="1" :disabled="!glowUse.box">
                         </div>
                         <div class="ctl">
-                            <label class="ctl-h" for="wb-glow-int"><span>Intensity</span><output>{{ glow.intensity }} %</output></label>
+                            <div class="ctl-h"><label for="wb-glow-int">Intensity</label><output>{{ glow.intensity }} %</output></div>
                             <input id="wb-glow-int" v-model.number="glow.intensity" type="range" min="0" max="100" step="1">
                         </div>
                     </div>
@@ -97,9 +97,9 @@
                     <div class="wb-ctl">
                         <div class="ctl">
                             <div class="ctl-h">
-                                <span>Corners</span>
+                                <span id="wb-cut-corners-h">Corners</span>
                             </div>
-                            <div class="ctl-row">
+                            <div class="ctl-row" role="group" aria-labelledby="wb-cut-corners-h">
                                 <button
                                     v-for="k in corners"
                                     :key="k"
@@ -114,21 +114,21 @@
                         </div>
                         <div class="ctl">
                             <div class="ctl-h">
-                                <span>Size</span>
+                                <span id="wb-cut-size-h">Size</span>
                             </div>
-                            <div class="ctl-row">
+                            <div class="ctl-row" role="group" aria-labelledby="wb-cut-size-h">
                                 <button class="chip" type="button" :aria-pressed="cut.linked" @click="toggleLink">
                                     Link
                                 </button>
                             </div>
                         </div>
                         <div v-if="cut.linked" class="ctl">
-                            <label class="ctl-h" for="wb-cut-size"><span>All corners</span><output>{{ cut.size }} px</output></label>
+                            <div class="ctl-h"><label for="wb-cut-size">All corners</label><output>{{ cut.size }} px</output></div>
                             <input id="wb-cut-size" v-model.number="cut.size" type="range" min="4" max="48" step="1">
                         </div>
                         <div v-else class="cut-many">
                             <div v-for="k in corners" :key="k" class="ctl">
-                                <label class="ctl-h" :for="'wb-cut-' + k"><span>{{ k.toUpperCase() }}</span><output>{{ cut.on[k] ? cut.each[k] + ' px' : 'off' }}</output></label>
+                                <div class="ctl-h"><label :for="'wb-cut-' + k">{{ k.toUpperCase() }}</label><output>{{ cut.on[k] ? cut.each[k] + ' px' : 'off' }}</output></div>
                                 <input :id="'wb-cut-' + k" v-model.number="cut.each[k]" type="range" min="4" max="48" step="1" :disabled="!cut.on[k]">
                             </div>
                         </div>
@@ -160,9 +160,9 @@
                     <div class="wb-ctl">
                         <div class="ctl">
                             <div class="ctl-h">
-                                <span>Preset</span>
+                                <span id="wb-cl-preset-h">Preset</span>
                             </div>
-                            <div class="ctl-row">
+                            <div class="ctl-row" role="group" aria-labelledby="wb-cl-preset-h">
                                 <button
                                     v-for="p in presets"
                                     :key="p.name"
@@ -195,10 +195,10 @@
                         </div>
                         <div class="ctl">
                             <div class="ctl-h">
-                                <span>Output</span>
+                                <span id="wb-cl-output-h">Output</span>
                             </div>
                             <div class="ctl-pair split">
-                                <div class="ctl-row">
+                                <div class="ctl-row" role="group" aria-labelledby="wb-cl-output-h">
                                     <button
                                         v-for="u in units"
                                         :key="u"
@@ -214,7 +214,7 @@
                             </div>
                         </div>
                         <div class="ctl">
-                            <label class="ctl-h" for="wb-cl-sim"><span>Simulated width</span><output>{{ type.sim }} px → {{ typeCalc.shown }} px</output></label>
+                            <div class="ctl-h"><label for="wb-cl-sim">Simulated width</label><output>{{ type.sim }} px → {{ typeCalc.shown }} px</output></div>
                             <input id="wb-cl-sim" v-model.number="type.sim" type="range" min="320" max="1600" step="10">
                         </div>
                     </div>
@@ -261,9 +261,9 @@
                         </div>
                         <div class="ctl">
                             <div class="ctl-h">
-                                <span>Steps</span>
+                                <span id="wb-pal-steps-h">Steps</span>
                             </div>
-                            <div class="ctl-row">
+                            <div class="ctl-row" role="group" aria-labelledby="wb-pal-steps-h">
                                 <button
                                     v-for="n in palSteps"
                                     :key="n"
@@ -278,9 +278,9 @@
                         </div>
                         <div class="ctl">
                             <div class="ctl-h">
-                                <span>Format</span>
+                                <span id="wb-pal-format-h">Format</span>
                             </div>
-                            <div class="ctl-row">
+                            <div class="ctl-row" role="group" aria-labelledby="wb-pal-format-h">
                                 <button
                                     v-for="f in palFormats"
                                     :key="f"
